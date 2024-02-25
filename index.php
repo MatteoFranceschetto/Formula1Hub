@@ -12,6 +12,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="css/base_style.css">
+        <script src="scripts/base_script.js"></script>
     </head>
 
     <body>
@@ -22,25 +23,41 @@
                 <div class="menu-lines"></div>
                 <div class="menu-lines"></div>
             </div>
+
+            <div class="centro">
+                Testo centrale
+            </div>
+
+            <div class="profilo" onclick="toggleDropdown()">
+                <img src="img/guest_ico.png" alt="profile" class="avatar">
+
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <!-- Contenuto del menu a tendina -->
+                    <a href="#">Opzione 1</a>
+                    <a href="#">Opzione 2</a>
+                    <a href="#">Opzione 3</a>
+                </div>
+            </div>
         </header>
 
         <div id="mySidenav" class="sidenav">        <!-- Side Menu -->
-            <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+            <a class="closebtn" onclick="closeSidebar()">&times;</a>
             <a href="#">About</a>
             <a href="#">Services</a>
             <a href="#">Clients</a>
             <a href="#">Contact</a>
         </div>
 
-        <script>
-            function toggleSidebar() {
-                document.getElementById("mySidenav").style.width = "250px";
-            }
+        <main>
 
-            function closeSidebar() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-        </script>
+            <!-- Dove va il testo della pagina -->
+            
+        </main>
+
+        <footer>
+            <!-- Contenuto del footer -->
+            <p>&copy; 2024 Il tuo sito</p>
+        </footer>
 
     </body>
 

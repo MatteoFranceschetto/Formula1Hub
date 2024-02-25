@@ -1,20 +1,78 @@
 header {
   background-color: #333;
+  padding: 10px;
   color: #fff;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1;
-
-  margin-left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  left: 0;
 }
 
 main {
   margin-top: 60px; /* Altezza dell'header */
+  margin-bottom: 60px; /* Altezza del footer */
+  padding: 20px;
+
+  flex: 1;
   padding: 20px;
 }
 
+.profilo {
+  float: right;
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1;
+  transition: height 0.3s ease-in-out;
+}
+
+.dropdown-menu.active {
+  display: block;
+  height: 100px; /* Regola questa altezza in base alle tue esigenze */
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.centro {
+  align-items: center;
+  display: block;
+}
+
 .menu-icon {
+  float: left;
   display: block;
   cursor: pointer;
   padding: 10px;
@@ -24,6 +82,7 @@ main {
   width: 30px;
   height: 3px;
   background-color: #fff;
+  margin: 6px 0;
   transition: background-color 0.3s;
 }
 
@@ -63,4 +122,23 @@ main {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.closebtn:hover{
+  cursor: pointer;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
