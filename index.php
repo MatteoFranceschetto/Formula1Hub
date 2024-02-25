@@ -3,8 +3,8 @@
 
     <head>
         <title>Formula1Hub - Il Centro Nervoso dell'Adrenalina Automobilistica</title>
-        <meta name="description" content="Formula1Hub: il tuo centro di notizie sulla Formula 1. Aggiornamenti in tempo reale, risultati, e analisi approfondite. Segui le gare e rimani al passo con il mondo emozionante della Formula 1!">
-        <meta name="keywords" content="Formula1Hub">
+        <meta name="description" content="Formula 1 Hub: il tuo centro di notizie sulla Formula 1. Aggiornamenti in tempo reale, risultati, e analisi approfondite. Segui le gare e rimani al passo con il mondo emozionante della Formula 1!">
+        <meta name="keywords" content="Formula 1 Hub">
 
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +25,7 @@
             </div>
 
             <div class="centro">
-                Testo centrale
+                <p><img src="img/Logo.png" class="logo"> FORMULA 1 HUB</p>
             </div>
 
             <div class="profilo" onclick="toggleDropdown()">

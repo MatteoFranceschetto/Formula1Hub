@@ -66,9 +66,27 @@ main {
   background-color: #f0f0f0;
 }
 
+@font-face {
+  font-family: 'Main_Title_Font';
+  src: URL('../ttf/full%20Pack%202025.ttf') format('truetype');
+}
+
 .centro {
   align-items: center;
   display: block;
+  flex: 1;
+  font-family: 'Main_Title_Font';
+}
+
+.centro p {
+  text-align: center;
+  font-size: 2em;
+  margin: 0;
+}
+
+.logo{
+  width: 1.5em;
+  height: auto;
 }
 
 .menu-icon {
