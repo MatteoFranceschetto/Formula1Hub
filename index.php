@@ -43,8 +43,11 @@
         <div id="mySidenav" class="sidenav">        <!-- Side Menu -->
             <a class="closebtn" onclick="closeSidebar()">&times;</a>
             <a href="#">About</a>
+            <hr>
             <a href="#">Services</a>
+            <hr>
             <a href="#">Clients</a>
+            <hr>
             <a href="#">Contact</a>
         </div>
 
