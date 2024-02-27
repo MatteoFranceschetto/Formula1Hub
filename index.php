@@ -16,40 +16,117 @@
 
 
         <style>
+            #overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+
             .login-container {
-            max-width: 400px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .login-container h2 {
-            text-align: center;
-        }
-        .login-container label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .login-container input[type="text"],
-        .login-container input[type="password"],
-        .login-container input[type="button"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
-        .login-container input[type="button"] {
-            background: red;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        .login-container input[type="button"]:hover {
-            background: darkred;
-        }
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 400px;
+                margin: 0 auto;
+                background: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 2;
+            }
+
+            .login-container h2 {
+                text-align: center;
+            }
+
+            .login-container label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .login-container input[type="text"],
+            .login-container input[type="password"],
+            .login-container button {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
+
+            .login-container button {
+                background: red;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+            .login-container button:hover {
+                background: darkred;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                color: #555;
+            }
+
+            .register-container {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 400px;
+                margin: 0 auto;
+                background: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 2;
+            }
+
+            .register-container h2 {
+                text-align: center;
+            }
+
+            .register-container label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .register-container input[type="text"],
+            .register-container input[type="password"],
+            .register-container button {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
+
+            .register-container button {
+                background: red; /* Cambia questo colore al colore del tuo bottone di login */
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+            .register-container button:hover {
+                background: darkred; /* Cambia questo colore al colore del tuo bottone di login in hover */
+            }
         </style>
 
     </head>
@@ -67,13 +144,13 @@
                 <p><img src="img/Logo.png" class="logo"> FORMULA 1 HUB</p>
             </div>
 
-            <div class="profilo" onclick="toggleDropdown()">
-                <img src="img/guest_ico.png" alt="profile" class="avatar">
+            <div class="profilo" id="profilo" onclick="toggleDropdown()">
+                <img src="img/guest_ico.png" alt="profile" class="avatar" id="default_img" style="">
 
                 <div class="dropdown-menu" id="dropdownMenu">
                     <!-- Contenuto del menu a tendina -->
-                    <a href="#">Login</a>
-                    <a href="#">Subscribe</a>
+                    <a onclick="openLogin()">Login</a>
+                    <a onclick="openRegister()">Subscribe</a>
                 </div>
             </div>
         </header>
@@ -89,34 +166,34 @@
             <a href="#">Contact</a>
         </div>
 
-        <main>
-        <div class="login-container">
+        <div id="overlay"></div>                    <!-- Display di Login e Register -->
+
+        <div class="login-container" id="loginContainer">
             <h2>Login</h2>
-            <form action="/your-login-endpoint" method="POST">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <input type="button" value="Login">
-            </form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button onclick="login()">Login</button>
+            <span onclick="closeLogin()" class="close-btn">&times;</span>
         </div>
                
 
-        <div class="login-container">
+        <div class="register-container" id="registerContainer">
             <h2>Registrazione</h2>
-            <form action="/your-login-endpoint" method="POST">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" name="cognome" required>
-                <label for="username">Username:</label>
-                <input type="text" id="regUsername" name="regUsername" required>
-                <label for="password">Password:</label>
-                <input type="password" id="regPassword" name="regPasseord" required>
-                <input type="button" value="Registrati">
-            </form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" required>
+            <label for="username">Username:</label>
+            <input type="text" id="regUsername" name="regUsername" required>
+            <label for="password">Password:</label>
+            <input type="password" id="regPassword" name="regPassword" required>
+            <button onclick="register()">Registrati</button>
+            <span onclick="closeRegister()" class="close-btn">&times;</span>
         </div>
-      
+
+        <main>
 
             <!-- Dove va il testo della pagina -->
             

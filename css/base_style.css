@@ -16,7 +16,6 @@ main {
   margin-top: 60px; /* Altezza dell'header */
   margin-bottom: 60px; /* Altezza del footer */
   padding: 20px;
-
   flex: 1;
   padding: 20px;
 }
