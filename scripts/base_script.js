@@ -10,7 +10,8 @@ function closeSidebar() {
 
 // ---------------- Menu utente dropdown -----------------------------------------
 
-function toggleDropdown() {
+function toggleDropdown(event) {
+
     var dropdownMenu = document.getElementById("dropdownMenu");
     dropdownMenu.classList.toggle("active");
 
@@ -21,10 +22,16 @@ function toggleDropdown() {
 // Chiudi il menu a tendina se si fa clic ovunque nella pagina
 window.addEventListener("click", function(event) {
     var dropdownMenu = document.getElementById("dropdownMenu");
-    var profileIcon = document.querySelector(".profilo");
+    var profileIcon = document.getElementById("profilo");
+    var avatarCustom = document.querySelector(".avatar_Custom");
+    var inizialiContainer = document.querySelector(".avatar_Custom .iniziali-container");
 
-    if (!event.target.matches(".profilo") && !event.target.matches(".avatar") && !event.target.closest(".dropdown-menu")) {
-        // Chiudi il menu a tendina se si fa clic fuori da esso o sull'icona del profilo
+    if (
+        !profileIcon.contains(event.target) &&
+        !event.target.closest(".dropdown-menu") &&
+        !event.target.closest(".info-container") 
+    ) {
+        // Chiudi il menu a tendina se si fa clic fuori da esso, sull'icona del profilo o su avatar_Custom
         dropdownMenu.style.display = "none";
     }
 });
@@ -142,6 +149,7 @@ function updateAvatar(nome, cognome) {
         avatar = document.createElement("div");
         avatar.className = "avatar_Custom";
         avatar.style.float = "right";
+        avatar.addEventListener("click", toggleDropdown);
         document.getElementById("profilo").appendChild(avatar);
     }
 
@@ -151,7 +159,13 @@ function updateAvatar(nome, cognome) {
     // Aggiungi il cerchio con iniziali e sfondo colorato
     var inizialiContainer = document.createElement("div");
     inizialiContainer.className = "iniziali-container";
+    inizialiContainer.id = "Circle_Background";
+    inizialiContainer.style.padding = "10px";
+    inizialiContainer.style.borderRadius = "50%";
     inizialiContainer.style.backgroundColor = getRandomColor();
+
+    // Aggiungi un evento click al container delle iniziali
+    inizialiContainer.addEventListener("click", toggleDropdown);
 
     var iniziali = document.createElement("span");
     iniziali.textContent = nome.charAt(0) + cognome.charAt(0);

@@ -14,121 +14,6 @@
         <link rel="stylesheet" href="css/base_style.css">
         <script src="scripts/base_script.js"></script>
 
-
-        <style>
-            #overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 1;
-            }
-
-            .login-container {
-                display: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                max-width: 400px;
-                margin: 0 auto;
-                background: #fff;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                z-index: 2;
-            }
-
-            .login-container h2 {
-                text-align: center;
-            }
-
-            .login-container label {
-                display: block;
-                margin-bottom: 5px;
-            }
-
-            .login-container input[type="text"],
-            .login-container input[type="password"],
-            .login-container button {
-                width: 100%;
-                padding: 8px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                box-sizing: border-box;
-            }
-
-            .login-container button {
-                background: red;
-                color: #fff;
-                border: none;
-                cursor: pointer;
-            }
-
-            .login-container button:hover {
-                background: darkred;
-            }
-
-            .close-btn {
-                position: absolute;
-                top: 5px;
-                right: 5px;
-                font-size: 20px;
-                cursor: pointer;
-                color: #555;
-            }
-
-            .register-container {
-                display: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                max-width: 400px;
-                margin: 0 auto;
-                background: #fff;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                z-index: 2;
-            }
-
-            .register-container h2 {
-                text-align: center;
-            }
-
-            .register-container label {
-                display: block;
-                margin-bottom: 5px;
-            }
-
-            .register-container input[type="text"],
-            .register-container input[type="password"],
-            .register-container button {
-                width: 100%;
-                padding: 8px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                box-sizing: border-box;
-            }
-
-            .register-container button {
-                background: red; /* Cambia questo colore al colore del tuo bottone di login */
-                color: #fff;
-                border: none;
-                cursor: pointer;
-            }
-
-            .register-container button:hover {
-                background: darkred; /* Cambia questo colore al colore del tuo bottone di login in hover */
-            }
-        </style>
-
     </head>
 
     <body>
@@ -147,7 +32,7 @@
             <div class="profilo" id="profilo" onclick="toggleDropdown()">
                 <img src="img/guest_ico.png" alt="profile" class="avatar" id="default_img" style="">
 
-                <div class="dropdown-menu" id="dropdownMenu">
+                <div class="dropdown-menu" id="dropdownMenu" style="display:none;">
                     <!-- Contenuto del menu a tendina -->
                     <a onclick="openLogin()">Login</a>
                     <a onclick="openRegister()">Subscribe</a>
