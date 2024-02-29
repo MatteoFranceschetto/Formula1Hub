@@ -2,7 +2,7 @@
    Header
 =============================== */
 header {
-  background-color: red;
+  background-color: #cc0000;
   padding: 10px;
   color: #fff;
   position: fixed;
@@ -190,7 +190,7 @@ main {
    Footer
 =============================== */
 footer {
-  background-color: red;
+  background-color: #cc0000;
   color: #fff;
   padding: 10px;
 }
@@ -420,13 +420,4 @@ html, body {
 =============================== */
 .social-icons li {
   margin-right: 10px;
-}
-
-/* ===============================
-   Social Icons Image
-=============================== */
-.social-icons a img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
 }

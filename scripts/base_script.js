@@ -179,58 +179,34 @@ function ripristinaAvatarDefault() {
     var avatar = document.querySelector(".avatar_Custom");
     document.getElementById("default_img").style.display = "block";
     
-    if (avatar) {
-        avatar.innerHTML = ""; // Rimuovi l'avatar personalizzato
-    }
+    avatar.parentNode.removeChild(avatar);
 }
 
 function ripristinaDropdown() {
     // Ripristina il dropdown
     var dropdown = document.querySelector("#dropdownMenu");
 
-    if (dropdown) {
-        dropdown.innerHTML = "";
+    dropdown.innerHTML = "";
 
-        favorite = document.createElement("a");
-        favorite.setAttribute("href", "#");
-        favorite.textContent = "Preferiti";
-        favorite.id = "menu_favorite";
-        dropdown.appendChild(favorite);
+    Login = document.createElement("a");
+    Login.textContent = "Login";
+    Login.addEventListener("click", openLogin);
+    dropdown.appendChild(Login);
 
-        logout = document.createElement("a");
-        logout.textContent = "Logout";
-        logout.id = "logout";
-        dropdown.appendChild(logout);
-    }
+    Subscribe = document.createElement("a");
+    Subscribe.textContent = "Subscribe";
+    Subscribe.addEventListener("click", openRegister);
+    dropdown.appendChild(Subscribe);
 }
 
 function ripristinaSideNav() {
     // Ripristina il side navigation
     var sidenav = document.querySelector("#mySidenav");
 
-    if (sidenav) {
-        // Rimuovi l'elemento hr e #side_favorite
-        var line = sidenav.querySelector("hr");
-        var sideFavorite = sidenav.querySelector("#side_favorite");
-
-        if (line) {
-            sidenav.removeChild(line);
-        }
-
-        if (sideFavorite) {
-            sidenav.removeChild(sideFavorite);
-        }
-
-        // Aggiungi di nuovo l'elemento hr e #side_favorite
-        line = document.createElement("hr");
-        sidenav.appendChild(line);
-
-        favorite = document.createElement("a");
-        favorite.setAttribute("href", "#");
-        favorite.textContent = "Preferiti";
-        favorite.id = "side_favorite";
-        sidenav.appendChild(favorite);
-    }
+    sidenav.removeChild(document.getElementById("Confronto_line"));
+    sidenav.removeChild(document.getElementById("Preferiti_line"));
+    sidenav.removeChild(document.getElementById("side_favorite"));
+    sidenav.removeChild(document.getElementById("Confronto"));
 }
 //#endregion
 
@@ -250,9 +226,6 @@ function updateAvatar(nome, cognome) {
         avatar.addEventListener("click", toggleDropdown);
         document.getElementById("profilo").appendChild(avatar);
     }
-
-    // Rimuovi l'immagine
-    avatar.innerHTML = "";
 
     // Aggiungi il cerchio con iniziali e sfondo colorato
     var inizialiContainer = document.createElement("div");
@@ -311,6 +284,7 @@ function updateSidenav(){
     var sidenav = document.querySelector("#mySidenav");
 
     line = document.createElement("hr");
+    line.id="Preferiti_line";
     sidenav.appendChild(line);
 
     favorite = document.createElement("a");
@@ -318,6 +292,16 @@ function updateSidenav(){
     favorite.textContent = "Preferiti";
     favorite.id = "side_favorite";
     sidenav.appendChild(favorite);
+
+    line2 = document.createElement("hr");
+    lin2.id="Confronto_line";
+    sidenav.appendChild(line2);
+
+    contronto = document.createElement("a");
+    contronto.setAttribute("href", "#");
+    contronto.textContent = "Confronto Piloti";
+    contronto.id = "Confronto";
+    sidenav.appendChild(contronto);
 }
 //#endregion
 
