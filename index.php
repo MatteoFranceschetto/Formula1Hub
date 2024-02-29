@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-
+<html onload="controllaCookieUtente()">
+    <?php session_start(); ?>
     <head>
         <title>Formula1Hub - Il Centro Nervoso dell'Adrenalina Automobilistica</title>
         <meta name="description" content="Formula 1 Hub: il tuo centro di notizie sulla Formula 1. Aggiornamenti in tempo reale, risultati, e analisi approfondite. Segui le gare e rimani al passo con il mondo emozionante della Formula 1!">
@@ -8,7 +8,7 @@
 
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=7">
+        <meta http-equiv="X-UA-Compatible" content="IE=9">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="css/base_style.css">
@@ -59,6 +59,10 @@
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+
+            <!-- Aggiungi la checkbox "Rimani Connesso" -->
+            <label for="rememberMe">Rimani Connesso <input type="checkbox" id="rememberMe_Login" name="rememberMe_Login"></label>
+
             <button onclick="login()">Login</button>
             <span onclick="closeLogin()" class="close-btn">&times;</span>
         </div>
@@ -74,6 +78,10 @@
             <input type="text" id="regUsername" name="regUsername" required>
             <label for="password">Password:</label>
             <input type="password" id="regPassword" name="regPassword" required>
+
+            <!-- Aggiungi la checkbox "Rimani Connesso" -->
+            <label for="rememberMe">Rimani Connesso <input type="checkbox" id="rememberMe_Register" name="rememberMe_Register"></label>
+
             <button onclick="register()">Registrati</button>
             <span onclick="closeRegister()" class="close-btn">&times;</span>
         </div>
@@ -85,8 +93,37 @@
         </main>
 
         <footer>
-            <!-- Contenuto del footer -->
-            <p>&copy; Schievano gay</p>
+        <div class="footer-container">
+        <div class="footer-section">
+            <h3>Ultime Notizie</h3>
+            <ul>
+                <li><a href="#">Campionato Attuale</a></li>
+                <li><a href="#">Gare e Risultati</a></li>
+                <li><a href="#">Team e Piloti</a></li>
+                <li><a href="#">Classifiche</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contatti</h3>
+            <p>Formula 1 News</p>
+            <p>Indirizzo: Via del Circuito, 123</p>
+            <p>Email: info@formula1news.com</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Seguici</h3>
+            <ul class="social-icons">
+                <li><a href="#" target="_blank"><img src="icon-facebook.png" alt="Facebook"></a></li>
+                <li><a href="#" target="_blank"><img src="icon-twitter.png" alt="Twitter"></a></li>
+                <li><a href="#" target="_blank"><img src="icon-instagram.png" alt="Instagram"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2024 Formula 1 News. Tutti i diritti riservati.</p>
+    </div>
         </footer>
 
     </body>

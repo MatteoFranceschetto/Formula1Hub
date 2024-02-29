@@ -1,3 +1,6 @@
+/* ===============================
+   Header
+=============================== */
 header {
   background-color: red;
   padding: 10px;
@@ -12,6 +15,9 @@ header {
   left: 0;
 }
 
+/* ===============================
+   Main Content
+=============================== */
 main {
   margin-top: 60px; /* Altezza dell'header */
   margin-bottom: 60px; /* Altezza del footer */
@@ -20,6 +26,9 @@ main {
   padding: 20px;
 }
 
+/* ===============================
+   Profilo
+=============================== */
 .profilo {
   float: right;
   display: block;
@@ -30,11 +39,17 @@ main {
   overflow: hidden;
 }
 
+/* ===============================
+   Avatar
+=============================== */
 .avatar {
   width: 30px;
   height: 30px;
 }
 
+/* ===============================
+   Dropdown Menu
+=============================== */
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -65,11 +80,17 @@ main {
   background-color: #f0f0f0;
 }
 
+/* ===============================
+   Font-Face
+=============================== */
 @font-face {
   font-family: 'Main_Title_Font';
   src: URL('../ttf/full%20Pack%202025.ttf') format('truetype');
 }
 
+/* ===============================
+   Centro
+=============================== */
 .centro {
   align-items: center;
   display: block;
@@ -83,11 +104,17 @@ main {
   margin: 0;
 }
 
-.logo{
+/* ===============================
+   Logo
+=============================== */
+.logo {
   width: 1.5em;
   height: auto;
 }
 
+/* ===============================
+   Menu Icon
+=============================== */
 .menu-icon {
   float: left;
   display: block;
@@ -95,6 +122,9 @@ main {
   padding: 10px;
 }
 
+/* ===============================
+   Menu Lines
+=============================== */
 .menu-lines {
   width: 30px;
   height: 3px;
@@ -103,7 +133,9 @@ main {
   transition: background-color 0.3s;
 }
 
-/* The side navigation menu */
+/* ===============================
+   Side Navigation
+=============================== */
 .sidenav {
   height: 100%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
@@ -117,7 +149,9 @@ main {
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
-/* The navigation menu links */
+/* ===============================
+   Sidenav Links
+=============================== */
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -127,12 +161,16 @@ main {
   transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
+/* ===============================
+   Sidenav Hover Effect
+=============================== */
 .sidenav a:hover {
   color: #f1f1f1;
 }
 
-/* Position and style the close button (top right corner) */
+/* ===============================
+   Close Button
+=============================== */
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -141,16 +179,25 @@ main {
   margin-left: 50px;
 }
 
-.closebtn:hover{
+/* ===============================
+   Close Button Hover Effect
+=============================== */
+.closebtn:hover {
   cursor: pointer;
 }
 
+/* ===============================
+   Footer
+=============================== */
 footer {
   background-color: red;
   color: #fff;
   padding: 10px;
 }
 
+/* ===============================
+   HTML, Body
+=============================== */
 html, body {
   height: 100%;
   margin: 0;
@@ -160,6 +207,9 @@ html, body {
   flex-direction: column;
 }
 
+/* ===============================
+   Overlay
+=============================== */
 #overlay {
   display: none;
   position: fixed;
@@ -171,6 +221,9 @@ html, body {
   z-index: 1;
 }
 
+/* ===============================
+   Login Container
+=============================== */
 .login-container {
   display: none;
   position: fixed;
@@ -217,6 +270,9 @@ html, body {
   background: darkred;
 }
 
+/* ===============================
+   Close Button
+=============================== */
 .close-btn {
   position: absolute;
   top: 5px;
@@ -226,6 +282,9 @@ html, body {
   color: #555;
 }
 
+/* ===============================
+   Register Container
+=============================== */
 .register-container {
   display: none;
   position: fixed;
@@ -262,12 +321,112 @@ html, body {
 }
 
 .register-container button {
-  background: red; /* Cambia questo colore al colore del tuo bottone di login */
+  background: red;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 .register-container button:hover {
-  background: darkred; /* Cambia questo colore al colore del tuo bottone di login in hover */
+  background: darkred;
+}
+
+/* ===============================
+   Footer Container
+=============================== */
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* ===============================
+   Footer Section
+=============================== */
+.footer-section {
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* ===============================
+   Footer Section Heading
+=============================== */
+.footer-section h3 {
+  color: #fff;
+  font-size: 1.2em;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+}
+
+/* ===============================
+   Footer Section List
+=============================== */
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* ===============================
+   Footer Section List Item
+=============================== */
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+/* ===============================
+   Footer Section Link
+=============================== */
+.footer-section a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ===============================
+   Footer Section Link Hover Effect
+=============================== */
+.footer-section a:hover {
+  color: #fff;
+}
+
+/* ===============================
+   Copyright
+=============================== */
+.copyright {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* ===============================
+   Copyright Paragraph
+=============================== */
+.copyright p {
+  margin: 0;
+  color: #bbb;
+}
+
+/* ===============================
+   Social Icons
+=============================== */
+.social-icons {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+/* ===============================
+   Social Icons List Item
+=============================== */
+.social-icons li {
+  margin-right: 10px;
+}
+
+/* ===============================
+   Social Icons Image
+=============================== */
+.social-icons a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }

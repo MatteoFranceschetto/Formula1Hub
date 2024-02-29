@@ -1,3 +1,4 @@
+//#region SideNav
 // ---------------- barra del menu laterale ---------------------------------------
 
 function toggleSidebar() {
@@ -7,7 +8,9 @@ function toggleSidebar() {
 function closeSidebar() {
     document.getElementById("mySidenav").style.width = "0";
 }
+//#endregion
 
+//#region Menu a tendina
 // ---------------- Menu utente dropdown -----------------------------------------
 
 function toggleDropdown(event) {
@@ -35,14 +38,16 @@ window.addEventListener("click", function(event) {
         dropdownMenu.style.display = "none";
     }
 });
+//#endregion
 
+//#region Chiamata controllo login
 // ---------------- Chiamata controllo login ---------------------------------------
 
 function login() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
-    /*var xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open("POST", "../query/Utenti_login.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
@@ -54,14 +59,17 @@ function login() {
                 var cognome = matches[2];
 
                 // Aggiorna il menu a tendina con l'avatar personalizzato e il nome/cognome
-                updateDropdown(nome, cognome);
-            } 
+                updateAvatar(nome, cognome);
+                updateDropdown();
+                updateSidenav();
+            }
         }
     };
     xhr.send("username=" + username + "&password=" + password);
-*/
+    //updateAvatar("Lorenzo", "Senesi");
+    //updateDropdown();
+    //updateSidenav();
 
-updateAvatar("Lorenzo", "Senesi");
     closeLogin();
 }
 
@@ -79,6 +87,7 @@ function closeLogin() {
     // Resetta i campi di input
     document.getElementById("username").value = "";
     document.getElementById("password").value = "";
+    document.getElementById("rememberMe_Login").checked = false;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -89,6 +98,9 @@ document.addEventListener("DOMContentLoaded", function() {
     overlay.addEventListener("click", closeLogin);
 });
 
+//#endregion
+
+//#region Chiamata controllo registrazione
 // ---------------- Chiamata controllo registrazione ---------------------------------------
 
 function register() {
@@ -102,7 +114,12 @@ function register() {
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            alert(xhr.responseText); // Puoi gestire la risposta come desideri
+            if(xhr.responseText.includes("Registrazione completata con successo")){
+                // Aggiorna il menu a tendina con l'avatar personalizzato e il nome/cognome
+                updateAvatar(nome, cognome);
+                updateDropdown();
+                updateSidenav();
+            }
         }
     };
     xhr.send("nome=" + nome + "&cognome=" + cognome + "&username=" + regUsername + "&password=" + regPassword);
@@ -135,10 +152,91 @@ function closeRegister() {
     document.getElementById("cognome").value = "";
     document.getElementById("regUsername").value = "";
     document.getElementById("regPassword").value = "";
+    document.getElementById("rememberMe_Register").checked = false;
 }
+//#endregion
+
+//#region Chiamata LogOut
+//----------------- Chiamata Funzione di LogOut ---------------------------
+
+function logOut() {
+    // Chiudi la sessione
+    chiudiSessione();
+
+    // Esegui le funzioni inverse
+    ripristinaAvatarDefault();
+    ripristinaDropdown();
+    ripristinaSideNav();
+}
+
+function chiudiSessione() {
+    // Rimuovi i dati della sessione da sessionStorage
+    sessionStorage.removeItem("utenteConnesso");
+}
+
+function ripristinaAvatarDefault() {
+    // Ripristina l'avatar predefinito
+    var avatar = document.querySelector(".avatar_Custom");
+    document.getElementById("default_img").style.display = "block";
+    
+    if (avatar) {
+        avatar.innerHTML = ""; // Rimuovi l'avatar personalizzato
+    }
+}
+
+function ripristinaDropdown() {
+    // Ripristina il dropdown
+    var dropdown = document.querySelector("#dropdownMenu");
+
+    if (dropdown) {
+        dropdown.innerHTML = "";
+
+        favorite = document.createElement("a");
+        favorite.setAttribute("href", "#");
+        favorite.textContent = "Preferiti";
+        favorite.id = "menu_favorite";
+        dropdown.appendChild(favorite);
+
+        logout = document.createElement("a");
+        logout.textContent = "Logout";
+        logout.id = "logout";
+        dropdown.appendChild(logout);
+    }
+}
+
+function ripristinaSideNav() {
+    // Ripristina il side navigation
+    var sidenav = document.querySelector("#mySidenav");
+
+    if (sidenav) {
+        // Rimuovi l'elemento hr e #side_favorite
+        var line = sidenav.querySelector("hr");
+        var sideFavorite = sidenav.querySelector("#side_favorite");
+
+        if (line) {
+            sidenav.removeChild(line);
+        }
+
+        if (sideFavorite) {
+            sidenav.removeChild(sideFavorite);
+        }
+
+        // Aggiungi di nuovo l'elemento hr e #side_favorite
+        line = document.createElement("hr");
+        sidenav.appendChild(line);
+
+        favorite = document.createElement("a");
+        favorite.setAttribute("href", "#");
+        favorite.textContent = "Preferiti";
+        favorite.id = "side_favorite";
+        sidenav.appendChild(favorite);
+    }
+}
+//#endregion
 
 // ---------------- Funzioni Comuni ---------------------------------------
 
+//#region updates
 function updateAvatar(nome, cognome) {
     // Seleziona l'elemento avatar esistente
     var avatar = document.querySelector(".avatar_Custom");
@@ -186,8 +284,105 @@ function updateAvatar(nome, cognome) {
     infoContainer.innerHTML = ""; // Pulisci il contenuto attuale
     infoContainer.appendChild(nomeCognomeSpan);
 
-    // Puoi mantenere il link "Profilo" immutato
 }
+
+function updateDropdown(){
+
+    var dropdown = document.querySelector("#dropdownMenu");
+
+    dropdown.innerHTML="";
+
+    favorite = document.createElement("a");
+    favorite.setAttribute("href", "#");
+    favorite.textContent = "Preferiti";
+    favorite.id = "menu_favorite";
+    dropdown.appendChild(favorite);
+
+    logout = document.createElement("a");
+    logout.textContent = "Logout";
+    avatar.addEventListener("click", toggleDropdown);
+    logout.id = "logout";
+    dropdown.appendChild(logout);
+
+}
+
+function updateSidenav(){   
+
+    var sidenav = document.querySelector("#mySidenav");
+
+    line = document.createElement("hr");
+    sidenav.appendChild(line);
+
+    favorite = document.createElement("a");
+    favorite.setAttribute("href", "#");
+    favorite.textContent = "Preferiti";
+    favorite.id = "side_favorite";
+    sidenav.appendChild(favorite);
+}
+//#endregion
+
+//#region controllo cookie/sessioni remeberMe
+//----------------- Controllo cookie/sessioni remeberMe ----------------------------
+
+function controllaCookieUtente() {
+    // Leggi i cookie per nome e cognome
+    var nome = leggiCookie("nome");
+    var cognome = leggiCookie("cognome");
+
+    if (nome && cognome) {
+        // I cookie sono presenti, crea una sessione
+        creaSessione(nome, cognome);
+
+        // Chiama le funzioni di aggiornamento
+        updateAvatar(nome, cognome);
+        updateDropdown();
+        updateSideNav();
+
+        console.log("Utente connesso:", nome, cognome);
+    } else {
+        controllaSessione();
+        console.log("Nessun cookie utente trovato.");
+    }
+}
+
+function creaSessione(nome, cognome) {
+    // Memorizza i dati della sessione in sessionStorage
+    sessionStorage.setItem("utenteConnesso", JSON.stringify({ nome: nome, cognome: cognome }));
+}
+
+function controllaSessione() {
+    // Controlla se esiste una sessione
+    var sessione = sessionStorage.getItem("utenteConnesso");
+
+    if (sessione) {
+        // Sessione presente, ottieni i dati e chiama le funzioni di aggiornamento
+        var utente = JSON.parse(sessione);
+        updateAvatar(utente.nome, utente.cognome);
+        updateDropdown();
+        updateSideNav();
+
+        console.log("Utente connesso dalla sessione:", utente.nome, utente.cognome);
+    } else {
+        console.log("Nessuna sessione utente trovata.");
+    }
+}
+
+// Funzione ausiliaria per leggere il valore di un cookie dato il nome
+function leggiCookie(nomeCookie) {
+    var nomeCookieEQ = nomeCookie + "=";
+    var cookieArray = document.cookie.split(';');
+    
+    for (var i = 0; i < cookieArray.length; i++) {
+        var cookie = cookieArray[i].trim();
+        
+        if (cookie.indexOf(nomeCookieEQ) === 0) {
+            return cookie.substring(nomeCookieEQ.length, cookie.length);
+        }
+    }
+    
+    return null;
+}
+//#endregion
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
