@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 25, 2024 alle 18:10
+-- Creato il: Feb 29, 2024 alle 18:29
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -63,6 +63,24 @@ CREATE TABLE `gara` (
   `Meteo` varchar(30) DEFAULT NULL,
   `NomeC` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Trigger `gara`
+--
+DELIMITER $$
+CREATE TRIGGER `incrementa_vittorie` AFTER UPDATE ON `gara` FOR EACH ROW BEGIN
+    DECLARE vincitore_id INT;
+    
+    -- Trova il codice del pilota vincitore
+    SET vincitore_id = SUBSTRING_INDEX(NEW.Vincitore, ' - ', 1);
+    
+    -- Incrementa il numero di vittorie del pilota
+    UPDATE piloti
+    SET NumVittorie = NumVittorie + 1
+    WHERE CodiceP = vincitore_id;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -138,6 +156,29 @@ CREATE TABLE `partecipazione` (
   `Posizione` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Trigger `partecipazione`
+--
+DELIMITER $$
+CREATE TRIGGER `confronta_posizione` AFTER INSERT ON `partecipazione` FOR EACH ROW BEGIN
+    DECLARE posizione_vincitore INT;
+    
+    -- Trova la posizione del pilota appena inserito
+    SELECT Posizione INTO posizione_vincitore
+    FROM partecipazione
+    WHERE CodiceG = NEW.CodiceG AND CodiceP = NEW.CodiceP;
+    
+    -- Controlla se il pilota inserito ha una posizione migliore del vincitore attuale
+    IF posizione_vincitore = 1 THEN
+        -- Aggiorna il vincitore della gara
+        UPDATE gara
+        SET Vincitore = CONCAT(NEW.CodiceP, ' - ', (SELECT Nome FROM piloti WHERE CodiceP = NEW.CodiceP))
+        WHERE CodiceG = NEW.CodiceG;
+    END IF;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -153,6 +194,26 @@ CREATE TABLE `piloti` (
   `Foto` longblob NOT NULL,
   `Numero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Trigger `piloti`
+--
+DELIMITER $$
+CREATE TRIGGER `before_insert_update_pilots` BEFORE INSERT ON `piloti` FOR EACH ROW BEGIN     
+DECLARE num_pilots INT;     
+-- Conta il numero di piloti attualmente nella squadra per l'anno corrente     
+SELECT COUNT(*)
+INTO num_pilots     
+FROM contratto c     
+WHERE c.codiceS IN (SELECT codiceS FROM contratto c1 WHERE c1.codiceP = NEW.codiceP AND c.Datacontratto = c1.Datacontratto);      
+-- Controlla se il numero di piloti supera 3     
+IF num_pilots >= 3 THEN         
+SIGNAL SQLSTATE '45000'         
+SET MESSAGE_TEXT = 'Numero massimo di piloti per squadra raggiunto per questo anno.';     
+END IF; 
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -222,7 +283,7 @@ ALTER TABLE `circuito`
 --
 ALTER TABLE `contratto`
   ADD PRIMARY KEY (`CodiceS`,`CodiceP`,`Datacontratto`),
-  ADD KEY `CodiceP` (`CodiceP`);
+  ADD KEY `contratto_ibfk_2` (`CodiceP`);
 
 --
 -- Indici per le tabelle `gara`
@@ -249,28 +310,28 @@ ALTER TABLE `news`
 --
 ALTER TABLE `newsg`
   ADD PRIMARY KEY (`CodiceG`,`CodiceN`),
-  ADD KEY `CodiceN` (`CodiceN`);
+  ADD KEY `newsg_ibfk_2` (`CodiceN`);
 
 --
 -- Indici per le tabelle `newsp`
 --
 ALTER TABLE `newsp`
   ADD PRIMARY KEY (`CodiceP`,`CodiceN`),
-  ADD KEY `CodiceN` (`CodiceN`);
+  ADD KEY `newsp_ibfk_2` (`CodiceN`);
 
 --
 -- Indici per le tabelle `newss`
 --
 ALTER TABLE `newss`
   ADD PRIMARY KEY (`CodiceS`,`CodiceN`),
-  ADD KEY `CodiceN` (`CodiceN`);
+  ADD KEY `newss_ibfk_2` (`CodiceN`);
 
 --
 -- Indici per le tabelle `partecipazione`
 --
 ALTER TABLE `partecipazione`
   ADD PRIMARY KEY (`CodiceG`,`CodiceP`,`Posizione`),
-  ADD KEY `CodiceP` (`CodiceP`);
+  ADD KEY `partecipazione_ibfk_2` (`CodiceP`);
 
 --
 -- Indici per le tabelle `piloti`
@@ -341,8 +402,8 @@ ALTER TABLE `utenti`
 -- Limiti per la tabella `contratto`
 --
 ALTER TABLE `contratto`
-  ADD CONSTRAINT `contratto_ibfk_1` FOREIGN KEY (`CodiceS`) REFERENCES `squadra` (`CodiceS`),
-  ADD CONSTRAINT `contratto_ibfk_2` FOREIGN KEY (`CodiceP`) REFERENCES `piloti` (`CodiceP`);
+  ADD CONSTRAINT `contratto_ibfk_1` FOREIGN KEY (`CodiceS`) REFERENCES `squadra` (`CodiceS`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `contratto_ibfk_2` FOREIGN KEY (`CodiceP`) REFERENCES `piloti` (`CodiceP`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `gara`
@@ -360,29 +421,29 @@ ALTER TABLE `macchina`
 -- Limiti per la tabella `newsg`
 --
 ALTER TABLE `newsg`
-  ADD CONSTRAINT `newsg_ibfk_1` FOREIGN KEY (`CodiceG`) REFERENCES `gara` (`CodiceG`),
-  ADD CONSTRAINT `newsg_ibfk_2` FOREIGN KEY (`CodiceN`) REFERENCES `news` (`CodiceN`);
+  ADD CONSTRAINT `newsg_ibfk_1` FOREIGN KEY (`CodiceG`) REFERENCES `gara` (`CodiceG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `newsg_ibfk_2` FOREIGN KEY (`CodiceN`) REFERENCES `news` (`CodiceN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `newsp`
 --
 ALTER TABLE `newsp`
-  ADD CONSTRAINT `newsp_ibfk_1` FOREIGN KEY (`CodiceP`) REFERENCES `piloti` (`CodiceP`),
-  ADD CONSTRAINT `newsp_ibfk_2` FOREIGN KEY (`CodiceN`) REFERENCES `news` (`CodiceN`);
+  ADD CONSTRAINT `newsp_ibfk_1` FOREIGN KEY (`CodiceP`) REFERENCES `piloti` (`CodiceP`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `newsp_ibfk_2` FOREIGN KEY (`CodiceN`) REFERENCES `news` (`CodiceN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `newss`
 --
 ALTER TABLE `newss`
-  ADD CONSTRAINT `newss_ibfk_1` FOREIGN KEY (`CodiceS`) REFERENCES `squadra` (`CodiceS`),
-  ADD CONSTRAINT `newss_ibfk_2` FOREIGN KEY (`CodiceN`) REFERENCES `news` (`CodiceN`);
+  ADD CONSTRAINT `newss_ibfk_1` FOREIGN KEY (`CodiceS`) REFERENCES `squadra` (`CodiceS`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `newss_ibfk_2` FOREIGN KEY (`CodiceN`) REFERENCES `news` (`CodiceN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `partecipazione`
 --
 ALTER TABLE `partecipazione`
-  ADD CONSTRAINT `partecipazione_ibfk_1` FOREIGN KEY (`CodiceG`) REFERENCES `gara` (`CodiceG`),
-  ADD CONSTRAINT `partecipazione_ibfk_2` FOREIGN KEY (`CodiceP`) REFERENCES `piloti` (`CodiceP`);
+  ADD CONSTRAINT `partecipazione_ibfk_1` FOREIGN KEY (`CodiceG`) REFERENCES `gara` (`CodiceG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `partecipazione_ibfk_2` FOREIGN KEY (`CodiceP`) REFERENCES `piloti` (`CodiceP`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `preferiti`
