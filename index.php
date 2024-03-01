@@ -9,6 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=9">
+        <meta http-equiv="X-UA-Compatible" content="IE=7">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="css/base_style.css">
@@ -61,7 +62,7 @@
             <input type="password" id="password" name="password" required>
 
             <!-- Aggiungi la checkbox "Rimani Connesso" -->
-            <label for="rememberMe">Rimani Connesso <input type="checkbox" id="rememberMe_Login" name="rememberMe_Login"></label>
+            <label id="rememberMe">Rimani Connesso <input type="checkbox" id="rememberMe_Login" name="rememberMe_Login"></label>
 
             <button onclick="login()">Login</button>
             <span onclick="closeLogin()" class="close-btn">&times;</span>
@@ -80,7 +81,7 @@
             <input type="password" id="regPassword" name="regPassword" required>
 
             <!-- Aggiungi la checkbox "Rimani Connesso" -->
-            <label for="rememberMe">Rimani Connesso <input type="checkbox" id="rememberMe_Register" name="rememberMe_Register"></label>
+            <label id="rememberMe">Rimani Connesso <input type="checkbox" id="rememberMe_Register" name="rememberMe_Register"></label>
 
             <button onclick="register()">Registrati</button>
             <span onclick="closeRegister()" class="close-btn">&times;</span>
@@ -114,9 +115,9 @@
         <div class="footer-section">
             <h3>Seguici</h3>
             <ul class="social-icons">
-                <li><a href="#" target="_blank"><img src="icon-facebook.png" alt="Facebook"></a></li>
-                <li><a href="#" target="_blank"><img src="icon-twitter.png" alt="Twitter"></a></li>
-                <li><a href="#" target="_blank"><img src="icon-instagram.png" alt="Instagram"></a></li>
+                <li><a href="#" target="_blank"><img src="img/facebook.png" alt="Facebook"></a></li>
+                <li><a href="#" target="_blank"><img src="img/x.png" alt="X"></a></li>
+                <li><a href="#" target="_blank"><img src="img/Instagram.png" alt="Instagram"></a></li>
             </ul>
         </div>
     </div>

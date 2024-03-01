@@ -48,7 +48,7 @@ function login() {
     var password = document.getElementById("password").value;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../query/Utenti_login.php", true);
+    xhr.open("POST", "query/Utenti_login.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -62,6 +62,12 @@ function login() {
                 updateAvatar(nome, cognome);
                 updateDropdown();
                 updateSidenav();
+                creaSessione(nome,cognome);
+
+                if(document.getElementById("rememberMe_Login").checked = true){
+                    creaCookie("nome", nome, 30); // durata 30 giorni
+                    creaCookie("cognome", cognome, 30);
+                }
             }
         }
     };
@@ -110,7 +116,7 @@ function register() {
     var regPassword = document.getElementById("regPassword").value;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../query/Utenti_register.php", true);
+    xhr.open("POST", "query/Utenti_register.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -119,6 +125,12 @@ function register() {
                 updateAvatar(nome, cognome);
                 updateDropdown();
                 updateSidenav();
+                creaSessione(nome, cognome);
+
+                if(document.getElementById("rememberMe_Register").checked = true){
+                    creaCookie("nome", nome, 30); // durata 30 giorni
+                    creaCookie("cognome", cognome, 30);
+                }
             }
         }
     };
@@ -177,9 +189,16 @@ function chiudiSessione() {
 function ripristinaAvatarDefault() {
     // Ripristina l'avatar predefinito
     var avatar = document.querySelector(".avatar_Custom");
+    var nome_cognome = document.querySelector("info-container");
     document.getElementById("default_img").style.display = "block";
     
-    avatar.parentNode.removeChild(avatar);
+    if (nome_cognome.parentNode) {
+        nome_cognome.parentNode.removeChild(nome_cognome);
+    }
+    if (avatar.parentNode) {
+        avatar.parentNode.removeChild(avatar);
+    }
+    
 }
 
 function ripristinaDropdown() {
@@ -273,7 +292,7 @@ function updateDropdown(){
 
     logout = document.createElement("a");
     logout.textContent = "Logout";
-    avatar.addEventListener("click", toggleDropdown);
+    logout.addEventListener("click", logOut);
     logout.id = "logout";
     dropdown.appendChild(logout);
 
@@ -365,6 +384,13 @@ function leggiCookie(nomeCookie) {
     }
     
     return null;
+}
+
+function creaCookie(nome, valore, giorniScadenza) {
+    var dataScadenza = new Date();
+    dataScadenza.setTime(dataScadenza.getTime() + (giorniScadenza * 24 * 60 * 60 * 1000));
+    var scadenza = "expires=" + dataScadenza.toUTCString();
+    document.cookie = nome + "=" + valore + ";" + scadenza + ";path=/";
 }
 //#endregion
 

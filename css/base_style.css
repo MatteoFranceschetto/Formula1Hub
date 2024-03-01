@@ -418,6 +418,8 @@ html, body {
 /* ===============================
    Social Icons List Item
 =============================== */
-.social-icons li {
+.social-icons li img{
   margin-right: 10px;
+  height: 50px;
+  width: auto;
 }
