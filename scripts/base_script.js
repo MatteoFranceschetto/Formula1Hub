@@ -68,6 +68,9 @@ function login() {
                     creaCookie("nome", nome, 30); // durata 30 giorni
                     creaCookie("cognome", cognome, 30);
                 }
+
+                console.log(document.cookie);
+                console.log(sessionStorage.getItem("utenteConnesso"));
             }
         }
     };
@@ -189,15 +192,11 @@ function chiudiSessione() {
 function ripristinaAvatarDefault() {
     // Ripristina l'avatar predefinito
     var avatar = document.querySelector(".avatar_Custom");
-    var nome_cognome = document.querySelector("info-container");
+    var nome_cognome = document.querySelector(".info-container");
     document.getElementById("default_img").style.display = "block";
     
-    if (nome_cognome.parentNode) {
-        nome_cognome.parentNode.removeChild(nome_cognome);
-    }
-    if (avatar.parentNode) {
-        avatar.parentNode.removeChild(avatar);
-    }
+    avatar.parentNode.removeChild(avatar);
+    nome_cognome.parentNode.removeChild(nome_cognome);
     
 }
 
@@ -313,7 +312,7 @@ function updateSidenav(){
     sidenav.appendChild(favorite);
 
     line2 = document.createElement("hr");
-    lin2.id="Confronto_line";
+    line2.id="Confronto_line";
     sidenav.appendChild(line2);
 
     contronto = document.createElement("a");
@@ -392,6 +391,20 @@ function creaCookie(nome, valore, giorniScadenza) {
     var scadenza = "expires=" + dataScadenza.toUTCString();
     document.cookie = nome + "=" + valore + ";" + scadenza + ";path=/";
 }
+
+window.addEventListener("load", function() {
+    // Stampa i cookie
+    console.log("Cookies:");
+    console.log(document.cookie);
+
+    // Stampa le sessioni in sessionStorage
+    console.log("Session Storage:");
+    for (var i = 0; i < sessionStorage.length; i++) {
+        var key = sessionStorage.key(i);
+        var value = sessionStorage.getItem(key);
+        console.log(key + ": " + value);
+    }
+});
 //#endregion
 
 function getRandomColor() {

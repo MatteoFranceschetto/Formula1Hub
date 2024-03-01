@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html onload="controllaCookieUtente()">
+<html>
     <?php session_start(); ?>
     <head>
         <title>Formula1Hub - Il Centro Nervoso dell'Adrenalina Automobilistica</title>
