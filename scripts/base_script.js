@@ -48,7 +48,7 @@ function login() {
     var password = document.getElementById("password").value;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "query/Utenti_login.php", true);
+    xhr.open("POST", "../query/Utenti_login.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -75,9 +75,6 @@ function login() {
         }
     };
     xhr.send("username=" + username + "&password=" + password);
-    //updateAvatar("Lorenzo", "Senesi");
-    //updateDropdown();
-    //updateSidenav();
 
     closeLogin();
 }
@@ -119,8 +116,9 @@ function register() {
     var regPassword = document.getElementById("regPassword").value;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "query/Utenti_register.php", true);
+    xhr.open("POST", "../query/Utenti_register.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             if(xhr.responseText.includes("Registrazione completata con successo")){
@@ -338,7 +336,7 @@ function controllaCookieUtente() {
         // Chiama le funzioni di aggiornamento
         updateAvatar(nome, cognome);
         updateDropdown();
-        updateSideNav();
+        updateSidenav();
 
         console.log("Utente connesso:", nome, cognome);
     } else {
@@ -361,7 +359,7 @@ function controllaSessione() {
         var utente = JSON.parse(sessione);
         updateAvatar(utente.nome, utente.cognome);
         updateDropdown();
-        updateSideNav();
+        updateSidenav();
 
         console.log("Utente connesso dalla sessione:", utente.nome, utente.cognome);
     } else {
@@ -405,6 +403,11 @@ window.addEventListener("load", function() {
         console.log(key + ": " + value);
     }
 });
+
+window.onload = function() {
+    // Chiamata a controllaCookieUtente() dopo che tutti gli script sono stati caricati
+    controllaCookieUtente();
+};
 //#endregion
 
 function getRandomColor() {
