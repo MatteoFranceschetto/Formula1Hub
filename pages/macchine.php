@@ -98,86 +98,32 @@
         </div>
 
         <main>
-            <h1>F1 Teams 2024</h1>
 
-            <table>
-                <tr>
-                    <td>
-                        <div class="cellatabella">
-                            <h3>Alpine</h3><img src="../img/loghi/alpinelogo.png" alt="profile" class="logosquadra"> <!-- immagine logo squadra-->
-                            <div class="pilota1">
-                                <img src="../img/piloti/ocon.png" alt="profile" class="pilotaimg"> <!-- immagine pilota1-->
-                                <br>
-                                <a href="#">pilota 1</a>
-                                
-                            </div>
-                            <div class="pilota2">
-                                <img src="../img/piloti/ocon.png" alt="profile" class="pilotaimg"> <!-- immagine pilota1-->
-                                <br>
-                                <a href="#">pilota 1</a>
-                            </div>
-                            <br>
-                            <img src="../img/macchine/Alpine.png" alt="profile" class="macchinaimg"> <!-- immagine della macchina-->
-                        </div>
-
-                    </td>
-                    <td>
-                    <div class="cellatabella">
-                        <h3>Alpine</h3><img src="../img/loghi/alpinelogo.png" alt="profile" class="logosquadra"> <!-- immagine logo squadra-->
-                            <div class="pilota1">
-                                <img src="../img/piloti/ocon.png" alt="profile" class="pilotaimg"> <!-- immagine pilota1-->
-                                <br>
-                                <a href="#">pilota 1</a>
-                            </div>
-                            <div class="pilota2">
-                                <img src="../img/piloti/ocon.png" alt="profile" class="pilotaimg"> <!-- immagine pilota1-->
-                                <br>
-                                <a href="#">pilota 1</a>
-                            </div>
-                            <br>
-                            <img src="../img/macchine/astonmartin.png" alt="profile" class="macchinaimg"> <!-- immagine della macchina-->
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Riga 2, Cell 1</td>
-                    <td>Riga 2, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 3, Cell 1</td>
-                    <td>Riga 3, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 4, Cell 1</td>
-                    <td>Riga 4, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 5, Cell 1</td>
-                    <td>Riga 5, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 6, Cell 1</td>
-                    <td>Riga 6, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 7, Cell 1</td>
-                    <td>Riga 7, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 8, Cell 1</td>
-                    <td>Riga 8, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 9, Cell 1</td>
-                    <td>Riga 9, Cell 2</td>
-                </tr>
-                <tr>
-                    <td>Riga 10, Cell 1</td>
-                    <td>Riga 10, Cell 2</td>
-                </tr>
-            </table>
+            <div id="piloti-tabella"></div>
             
         </main>
+
+        <script>
+            $(document).ready(function() {
+                // Funzione per ottenere e visualizzare i dati dei piloti con Ajax
+                function caricaDatiPiloti() {
+                    $.ajax({
+                        url: 'carica_dati_piloti.php', // Sostituisci con il percorso del file PHP che esegue la query del database
+                        type: 'GET',
+                        dataType: 'html',
+                        success: function(data) {
+                            $('#piloti-tabella').html(data);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log('Errore Ajax: ' + textStatus + ' ' + errorThrown);
+                        }
+                    });
+                }
+
+                // Chiama la funzione al caricamento della pagina
+                caricaDatiPiloti();
+            });
+        </script>
 
         <footer>
             <!-- Contenuto del footer -->
