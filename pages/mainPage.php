@@ -15,6 +15,22 @@
         <link rel="stylesheet" href="../css/base_style.css">
         <script src="../scripts/base_script.js"></script>
 
+
+        <style>
+            
+            .slideshow-container , .img{
+                max-width: 1000px;
+                max-height: 500px;
+                min-width: 500px;
+                min-height: 250px;
+                position: relative;
+                margin: auto;
+            }
+
+
+        </style>
+
+        
     </head>
 
     <body>
@@ -88,9 +104,98 @@
         </div>
 
         <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Benvenuto su Formula1Hub!</h1>
+                    <p>Il centro nervoso dell'adrenalina automobilistica.</p>
 
-            <!-- Dove va il testo della pagina -->
-            
+
+                    <div class="slideshow-container" style="margin-top: 6.5%;">
+                    <div class="mySlides fade">
+                    
+                    <img src="../img/macchine/ferrari.png" style="width:100%" class="img">
+
+                    </div>
+
+                    <div class="mySlides fade">
+                    
+                    <img src="../img/piloti/hamilton.png" style="width:100%" class="img">
+
+                    </div>
+
+                    <div class="mySlides fade">
+                    
+                    <img src="../img/piloti/leclerc.png" style="width:100%" class="img">
+
+                    </div>
+
+                    </div>
+                    <br>
+
+                    <div style="text-align:center">
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    </div>
+
+                    <script>
+                        var slideIndex = 0;
+                        showSlides();
+                        
+                        function showSlides() {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides");
+                        var dots = document.getElementsByClassName("dot");
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";  
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) {slideIndex = 1}    
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex-1].style.display = "block";  
+                        dots[slideIndex-1].className += " active";
+                        setTimeout(showSlides, 5000); // Change image every 2 seconds
+                        }
+                    </script>
+
+
+                    
+                </div>
+            </section>
+
+            <section class="about-section">
+                <div class="container">
+                    <h2>Chi siamo</h2>
+                    <p>Formula1Hub è il tuo punto di riferimento per tutte le ultime notizie, aggiornamenti e analisi approfondite sulla Formula 1. Da anni siamo al centro del mondo emozionante della Formula 1, fornendo ai nostri lettori informazioni accurate e dettagliate.</p>
+                    
+                    <p>La passione per la Formula 1 è ciò che ci guida. Siamo una squadra di esperti appassionati che vive e respira il motorsport ad ogni gara, con un unico obiettivo: portare ai nostri lettori il meglio di questo straordinario sport.</p>
+
+                    <p>Copriamo ogni aspetto della Formula 1, dagli avvincenti Gran Premi ai dettagli tecnici dei bolidi, dalle storie dei piloti alle strategie delle scuderie. Con la nostra dedizione e competenza, ci impegniamo a offrire un'esperienza informativa completa per tutti gli appassionati.</p>
+
+                    <p>Oltre alle ultime notizie e aggiornamenti in tempo reale, offriamo analisi approfondite delle gare, interviste esclusive, e un'ampia copertura dei test invernali e delle sessioni di prove libere. Sia che tu sia un fan incallito o un osservatore occasionale, troverai su Formula1Hub un luogo dove approfondire la tua passione per la Formula 1.</p>
+                </div>
+            </section>
+
+            <section class="services-section">
+                <div class="container">
+                    <h2>I nostri servizi</h2>
+                    <div class="service">
+                        <h3>Risultati e Classifiche</h3>
+                        <p>Scopri i risultati delle gare passate e le classifiche aggiornate dei piloti e dei team. Dai un'occhiata ai tempi dei giri, alle posizioni in classifica e alle statistiche dettagliate per avere una visione completa della stagione di Formula 1.</p>
+                    </div>
+                    <div class="service">
+                        <h3>Analisi Approfondite</h3>
+                        <p>Approfondimenti e commenti degli esperti per comprendere meglio il mondo della Formula 1. Le nostre analisi vanno oltre i risultati, esplorando le tattiche di gara, le scelte dei pneumatici, le strategie dei team e molto altro. Se vuoi capire cosa sta davvero accadendo dietro le quinte, sei nel posto giusto.</p>
+                    </div>
+                    <div class="service">
+                        <h3>News</h3>
+                        <p>Ogni giorno, nuovi articoli su gare, squadre e piloti. Siamo costantemente aggiornati con le ultime notizie della Formula 1, fornendo ai nostri lettori un flusso continuo di informazioni fresche e interessanti. Che tu stia cercando dettagli sui prossimi eventi, interviste esclusive o retroscena sulle squadre, troverai tutto qui.</p>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
         <footer>
