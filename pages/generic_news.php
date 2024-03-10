@@ -13,79 +13,11 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="../css/base_style.css">
+        <link rel="stylesheet" href="../css/newsG.css">
+    
         <script src="../scripts/base_script.js"></script>
+        <script src="../scripts/newsPage.js"></script>
 
-
-        <style>
-            /* Aggiungi questo CSS al tuo file CSS base_style.css o a un nuovo file CSS */
-
-main {
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.search-form {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.search-form input[type="search"] {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-}
-
-.search-form select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 0;
-    border-left: none;
-    background-color: #f9f9f9;
-}
-
-.search-form button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: red;
-    color: #fff;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.search-form button:hover {
-    background-color: darkred;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-main div {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-/* Stili per il menu a tendina, barra laterale, etc., rimangono invariati */
-
-        </style>
     </head>
 
     <body>
@@ -160,21 +92,22 @@ p {
 
         <main>
 
-                <div class="container">
-                    <h1>Notizie F1</h1>
-                    <form action="#" method="GET" class="search-form">
-                        
-                        <input type="search" name="search" placeholder="Cerca notizie...">
-                        <select name="tiponews" id="tiponews">
-                            <option value=""></option>
-                            <option value="scuderie">Scuderie</option>
-                            <option value="piloti">Piloti</option>
-                            <option value="gare">Gare</option>
-                        </select>
-                        <button type="submit">Cerca</button>
-                    </form>
-                </div>
+            <div class="container">
+                <h1>Notizie F1</h1>
+                <form action="#" method="GET" class="search-form">
+                    
+                    <input type="search" id="search" name="search" placeholder="Cerca notizie...">
+                    <select name="tiponews" id="tiponews">
+                        <option value=""></option>
+                        <option value="s">Scuderie</option>
+                        <option value="p">Piloti</option>
+                        <option value="g">Gare</option>
+                    </select>
+                    <button onclick="loadNumNews()">Cerca</button>
+                </form>
+            </div>
 
+            <div id="container_news">
                 <div>
                     <h3>How drivers stay healthy during the season</h3>
                     <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
@@ -189,7 +122,11 @@ p {
                     <h3>How drivers stay healthy during the season</h3>
                     <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
                 </div>
+            </div>
             
+            <div id="nav-container"></div>
+
+            <input type="hidden" id="hiddenField" value="1">
         </main>
 
         <footer>

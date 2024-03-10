@@ -13,7 +13,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="../css/base_style.css">
+
         <script src="../scripts/base_script.js"></script>
+        <script src="../scripts/preferiti.js"></script>
 
     </head>
 
@@ -87,51 +89,10 @@
             <span onclick="closeRegister()" class="close-btn">&times;</span>
         </div>
 
-        <main>            
+        <main>
+
             <h1>PRFERITI</h1>
-            <h3>squadra</h3>
-            <p>se c'è la squadra preferita</p>
-            <img src="../img/loghi/ferrari.png" alt="ferrari"> <!--logo della squadra peferita-->
-
-            <p>foto piloti preferiti</p>
-            <img src="../img/piloti/leclerc.png" alt="leclerc"> <!--pilota della squadra peferita-->
-            <img src="../img/piloti/leclerc.png" alt="leclerc"> <!--pilota della squadra peferita-->
-
-            <p>leggi le notizie della tua squadra</p>
-            <div>
-                <h3>How drivers stay healthy during the season</h3>
-                <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
-            </div>
-
-            <div>
-                <h3>How drivers stay healthy during the season</h3>
-                <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
-            </div>
-
-            <div>
-                <h3>How drivers stay healthy during the season</h3>
-                <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            se non c'è 
-
-            <input type="button" value="scegli la tua squadra preferita: " onclick=" "> <!--facciamo compatire qualcosa dove chiede di inserire la squadra preferita-->
-
-            <select name="sceltasquadra" id="sceltasquadra"> <!--questo va dentro la roba che compare-->
-                <option value="squadra1">squadra1</option>
-                <option value="squadra2">squadra2</option>
-                <option value="squadra3">squadra3</option>
-                <option value="squadra4">squadra4</option>
-                <option value="squadra5">squadra5</option>
-            </select>
-
- 
-        </div>
+            <div id="container-preferiti"></div>
                
         </main>
 

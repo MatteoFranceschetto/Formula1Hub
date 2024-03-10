@@ -1,0 +1,40 @@
+table {
+    width: 50%;
+    border-collapse: separate; /* Usiamo border-collapse: separate per separare le celle */
+    border-spacing: 10px; /* Aggiungiamo spazio tra le celle */
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border:0;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+table tr td {
+    text-align: center; /* Aggiunto per centrare il contenuto */
+}
+.pilota1 {
+    float: left; /* Allinea a sinistra */
+    margin-right: 10px; /* Aggiunge spazio tra i piloti */
+}
+.pilota2 {
+    float: right; /* Allinea a destra */
+    margin-left: 10px; /* Aggiunge spazio tra i piloti */
+}
+.macchinaimg{
+    width: 30em;
+    height: auto;
+}
+.pilotaimg{
+    width: 5em;
+    height: auto;
+    
+    border: 2px solid;
+}
+.logosquadra{
+    width: 7em;
+    height: auto;
+}

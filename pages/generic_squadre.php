@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <?php session_start(); ?>
+
     <head>
         <title>Formula1Hub - Il Centro Nervoso dell'Adrenalina Automobilistica</title>
         <meta name="description" content="Formula 1 Hub: il tuo centro di notizie sulla Formula 1. Aggiornamenti in tempo reale, risultati, e analisi approfondite. Segui le gare e rimani al passo con il mondo emozionante della Formula 1!">
@@ -8,20 +8,19 @@
 
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=9">
         <meta http-equiv="X-UA-Compatible" content="IE=7">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="../css/base_style.css">
-        <link rel="stylesheet" href="../css/pilotaS.css">
+        <link rel="stylesheet" href="../css/squadreG.css">
 
         <script src="../scripts/base_script.js"></script>
-        <script src="../scripts/pilotaS.js"></script>
+        <script src="../scripts/squadreG.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     </head>
 
     <body>
-    
         <header id="myHeader">
             <div class="menu-icon" onclick="toggleSidebar()">
                 <div class="menu-lines"></div>
@@ -56,6 +55,7 @@
         </div>
 
         <div id="overlay"></div>                    <!-- Display di Login e Register -->
+        <div id="errorMessage"></div>               <!-- Display messaggi di errore -->
 
         <div class="login-container" id="loginContainer">
             <h2>Login</h2>
@@ -92,44 +92,42 @@
 
         <main>
 
-            <input type="hidden" id="hiddenField" value="<?php echo $_POST["cognome"] ?>">
-
-            <div id="container_pilota"></div>
+            <div id="piloti-tabella"></div>
             
         </main>
 
         <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Ultime Notizie</h3>
-                <ul>
-                    <li><a href="#">Campionato Attuale</a></li>
-                    <li><a href="#">Gare e Risultati</a></li>
-                    <li><a href="#">Team e Piloti</a></li>
-                    <li><a href="#">Classifiche</a></li>
-                </ul>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Ultime Notizie</h3>
+                    <ul>
+                        <li><a href="#">Campionato Attuale</a></li>
+                        <li><a href="#">Gare e Risultati</a></li>
+                        <li><a href="#">Team e Piloti</a></li>
+                        <li><a href="#">Classifiche</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contatti</h3>
+                    <p>Formula 1 News</p>
+                    <p>Indirizzo: Via del Circuito, 123</p>
+                    <p>Email: info@formula1news.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Seguici</h3>
+                    <ul class="social-icons">
+                        <li><a href="#" target="_blank"><img src="../img/facebook.png" alt="Facebook"></a></li>
+                        <li><a href="#" target="_blank"><img src="../img/x.png" alt="X"></a></li>
+                        <li><a href="#" target="_blank"><img src="../img/Instagram.png" alt="Instagram"></a></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="footer-section">
-                <h3>Contatti</h3>
-                <p>Formula 1 News</p>
-                <p>Indirizzo: Via del Circuito, 123</p>
-                <p>Email: info@formula1news.com</p>
+            <div class="copyright">
+                <p>&copy; 2024 Formula 1 News. Tutti i diritti riservati.</p>
             </div>
-
-            <div class="footer-section">
-            <h3>Seguici</h3>
-            <ul class="social-icons">
-                <li><a href="#" target="_blank"><img src="../img/facebook.png" alt="Facebook"></a></li>
-                <li><a href="#" target="_blank"><img src="../img/x.png" alt="X"></a></li>
-                <li><a href="#" target="_blank"><img src="../img/Instagram.png" alt="Instagram"></a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="copyright">
-        <p>&copy; 2024 Formula 1 News. Tutti i diritti riservati.</p>
-    </div>
         </footer>
 
     </body>

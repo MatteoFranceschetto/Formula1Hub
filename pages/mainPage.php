@@ -35,7 +35,7 @@
 
     <body>
     
-        <header id="myHeader">
+    <header id="myHeader">
             <div class="menu-icon" onclick="toggleSidebar()">
                 <div class="menu-lines"></div>
                 <div class="menu-lines"></div>
@@ -69,6 +69,7 @@
         </div>
 
         <div id="overlay"></div>                    <!-- Display di Login e Register -->
+        <div id="errorMessage"></div>               <!-- Display messaggi di errore -->
 
         <div class="login-container" id="loginContainer">
             <h2>Login</h2>
@@ -83,7 +84,7 @@
             <button onclick="login()">Login</button>
             <span onclick="closeLogin()" class="close-btn">&times;</span>
         </div>
-               
+   
 
         <div class="register-container" id="registerContainer">
             <h2>Registrazione</h2>
@@ -102,6 +103,7 @@
             <button onclick="register()">Registrati</button>
             <span onclick="closeRegister()" class="close-btn">&times;</span>
         </div>
+
 
         <main>
             <section class="hero-section">
@@ -199,37 +201,37 @@
         </main>
 
         <footer>
-        <div class="footer-container">
-        <div class="footer-section">
-            <h3>Ultime Notizie</h3>
-            <ul>
-                <li><a href="#">Campionato Attuale</a></li>
-                <li><a href="#">Gare e Risultati</a></li>
-                <li><a href="#">Team e Piloti</a></li>
-                <li><a href="#">Classifiche</a></li>
-            </ul>
-        </div>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Ultime Notizie</h3>
+                    <ul>
+                        <li><a href="#">Campionato Attuale</a></li>
+                        <li><a href="#">Gare e Risultati</a></li>
+                        <li><a href="#">Team e Piloti</a></li>
+                        <li><a href="#">Classifiche</a></li>
+                    </ul>
+                </div>
 
-        <div class="footer-section">
-            <h3>Contatti</h3>
-            <p>Formula 1 News</p>
-            <p>Indirizzo: Via del Circuito, 123</p>
-            <p>Email: info@formula1news.com</p>
-        </div>
+                <div class="footer-section">
+                    <h3>Contatti</h3>
+                    <p>Formula 1 News</p>
+                    <p>Indirizzo: Via del Circuito, 123</p>
+                    <p>Email: info@formula1news.com</p>
+                </div>
 
-        <div class="footer-section">
-            <h3>Seguici</h3>
-            <ul class="social-icons">
-                <li><a href="#" target="_blank"><img src="../img/facebook.png" alt="Facebook"></a></li>
-                <li><a href="#" target="_blank"><img src="../img/x.png" alt="X"></a></li>
-                <li><a href="#" target="_blank"><img src="../img/Instagram.png" alt="Instagram"></a></li>
-            </ul>
-        </div>
-    </div>
+                <div class="footer-section">
+                    <h3>Seguici</h3>
+                    <ul class="social-icons">
+                        <li><a href="#" target="_blank"><img src="../img/facebook.png" alt="Facebook"></a></li>
+                        <li><a href="#" target="_blank"><img src="../img/x.png" alt="X"></a></li>
+                        <li><a href="#" target="_blank"><img src="../img/Instagram.png" alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
 
-    <div class="copyright">
-        <p>&copy; 2024 Formula 1 News. Tutti i diritti riservati.</p>
-    </div>
+            <div class="copyright">
+                <p>&copy; 2024 Formula 1 News. Tutti i diritti riservati.</p>
+            </div>
         </footer>
 
     </body>

@@ -13,14 +13,11 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="../css/base_style.css">
-        <script src="../scripts/base_script.js"></script>
-        
+        <link rel="stylesheet" href="../css/macchineG.css">
 
-        <style>
-            .scuderia img{
-                float:left;
-            }
-        </style>
+        <script src="../scripts/base_script.js"></script>
+        <script src="../scripts/macchineG.js"></script>
+        
     </head>
 
     <body>
@@ -100,110 +97,7 @@
                 <p>Scopri come si sono evolute le macchine dei team di Formula 1 negli anni</p>
             </div>
             
-            <div>
-                <div class="scuderia">
-                    <img src="..img/loghi/ferrari.png" alt="ferrari logo"><h1>Ferrari</h1>  <!-- titolo con logo della squadra -->
-                </div>
-                
-                <table>
-                    <tr>
-                        <td>
-                            <!--2022 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <!--2023 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <!--2024 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="scuderia">
-                    <img src="..img/loghi/ferrari.png" alt="ferrari logo"><h1>Ferrari</h1>  <!-- titolo con logo della squadra -->
-                </div>
-                <table>
-                    <tr>
-                        <td>
-                            <!--2022 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <!--2023 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <!--2024 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="scuderia">
-                    <img src="..img/loghi/ferrari.png" alt="ferrari logo"><h1>Ferrari</h1>  <!-- titolo con logo della squadra -->
-                </div>
-                <table>
-                    <tr>
-                        <td>
-                            <!--2022 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <!--2023 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <!--2024 -->
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="scuderia">
-                    <img src="..img/loghi/ferrari.png" alt="ferrari logo"><h1>Ferrari</h1>  <!-- titolo con logo della squadra -->
-                </div>
-                <table>
-                    <tr>
-                        <td>
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                        <td>
-                            <img src="../img/macchine/ferrari.png" alt="ocon">  <!--immagine della macchina-->
-                            <label for="cognome">anno di costruzione</label>    <!--anno di costruzione della macchina-->
-                            <label for="nome">nome della macchina</label>       <!--nome della macchina-->
-                        </td>
-                    </tr>
-                </table>
-                
-            </div>
+            <div id="container-macchine"></div>
             
         </main>
 

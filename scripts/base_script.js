@@ -72,6 +72,9 @@ function login() {
                 console.log(document.cookie);
                 console.log(sessionStorage.getItem("utenteConnesso"));
             }
+            else{
+                showErrorMessage("Accesso fallito. Verifica le tue credenziali.");
+            }
         }
     };
     xhr.send("username=" + username + "&password=" + password);
@@ -133,6 +136,9 @@ function register() {
                     creaCookie("cognome", cognome, 30);
                 }
             }
+            else{
+                showErrorMessage("Registrazione fallita. Verifica i dati inseriti.");
+            }
         }
     };
     xhr.send("nome=" + nome + "&cognome=" + cognome + "&username=" + regUsername + "&password=" + regPassword);
@@ -168,6 +174,18 @@ function closeRegister() {
     document.getElementById("rememberMe_Register").checked = false;
 }
 //#endregion
+
+function showErrorMessage(message) {
+    var errorMessageElement = document.getElementById("errorMessage");
+    errorMessageElement.textContent = message;
+    errorMessageElement.style.display = "block";
+    setTimeout(closeErrorMessage(), 6000);
+}
+
+function closeErrorMessage() {
+    var errorMessageElement = document.getElementById("errorMessage");
+    errorMessageElement.style.display = "none";
+}
 
 //#region Chiamata LogOut
 //----------------- Chiamata Funzione di LogOut ---------------------------
@@ -248,6 +266,8 @@ function updateAvatar(nome, cognome) {
     inizialiContainer.className = "iniziali-container";
     inizialiContainer.id = "Circle_Background";
     inizialiContainer.style.padding = "10px";
+    inizialiContainer.style.justifyContent = "center";
+    inizialiContainer.style.alignItems = "center";
     inizialiContainer.style.borderRadius = "50%";
     inizialiContainer.style.backgroundColor = getRandomColor();
 
@@ -258,21 +278,21 @@ function updateAvatar(nome, cognome) {
     iniziali.textContent = nome.charAt(0) + cognome.charAt(0);
 
     inizialiContainer.appendChild(iniziali);
-    avatar.appendChild(inizialiContainer);
 
     // Crea o aggiorna il blocco per il nome e cognome accanto al nuovo avatar
     var infoContainer = document.querySelector(".info-container");
     if (!infoContainer) {
         infoContainer = document.createElement("div");
         infoContainer.className = "info-container";
-        document.getElementById("profilo").appendChild(infoContainer);
     }
+    infoContainer.innerHTML = ""; // Pulisci il contenuto attuale
 
     var nomeCognomeSpan = document.createElement("span");
     nomeCognomeSpan.textContent = nome + " " + cognome;
-    infoContainer.innerHTML = ""; // Pulisci il contenuto attuale
-    infoContainer.appendChild(nomeCognomeSpan);
 
+    avatar.appendChild(inizialiContainer);
+    infoContainer.appendChild(nomeCognomeSpan);
+    document.getElementById("profilo").appendChild(infoContainer);
 }
 
 function updateDropdown(){

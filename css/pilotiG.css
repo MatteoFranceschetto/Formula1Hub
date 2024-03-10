@@ -1,0 +1,23 @@
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 400px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center; /* Aggiunto per centrare il contenuto */
+}
+
+th, td {
+    padding: 10px;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+#main_cotainer{
+    align-items: center;
+}

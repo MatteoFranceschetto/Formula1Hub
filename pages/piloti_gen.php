@@ -13,6 +13,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="../css/base_style.css">
+        <link rel="stylesheet" href="../css/pilotiG.css">
+
+        <script src="../scripts/pilotiG.js"></script>
         <script src="../scripts/base_script.js"></script>
 
     </head>
@@ -40,38 +43,6 @@
                 </div>
             </div>
 
-
-            <style>
-                main {
-                    max-width: 800px;
-                    padding: 20px;
-                    text-align: center;
-                }
-
-                table {
-                    margin: 20px auto;
-                    border-collapse: collapse;
-                    width: 100%;
-                    max-width: 400px;
-                }
-
-                table, th, td {
-                    border: 1px solid black;
-                }
-
-                th, td {
-                    padding: 10px;
-                }
-
-                h1 {
-                    margin-top: 20px;
-                }
-
-                footer {
-                    text-align: center;
-                    margin-top: 20px;
-                }
-            </style>
         </header>
        
         <div id="mySidenav" class="sidenav">        <!-- Side Menu -->
@@ -121,118 +92,8 @@
         </div>
 
         <main>
-            <!-- Tabella 1 -->
-            <h1>ALPINE</h1><img src="..img/loghi/alpine_logo.png" alt="alpine">  <!-- non mi trova i loghi delle scuderie -->
-            <table>
-                <tr>
-                    <td>
-                        <img src="../img/piloti/Ocon.png" alt="ocon">
-                        <label for="nome">Esteban</label>
-                        <label for="cognome">Ocon</label>
-                        <label for="numero pilota">31</label>
-                    </td>
-                    <td>
-                        <img src="../img/piloti/Ocon.png" alt="ocon">
-                        <label for="nome">Esteban</label>
-                        <label for="cognome">Ocon</label>
-                        <label for="numero pilota">31</label>
-                    </td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 2 -->
-            <h1>ASTON MARTIN</h1><img src="..img/loghi/astonmartin_logo.png" alt="aston martin">
-            <table>
-                <tr>
-                    <td>
-                        <img src="../img/piloti/Ocon.png" alt="ocon">     
-                        <label for="nome">Esteban</label>
-                        <label for="cognome">Ocon</label>     
-                        <label for="numero pilota">31</label>   <!-- non so se sia carino mettere il numero nel caso guarda se metterlo dopo il nome o prima oppure sottoal nome -->
-                    </td>
-                    <td>
-                        <img src="../img/piloti/Ocon.png" alt="ocon">
-                        <label for="numero pilota">31</label>
-                        <label for="nome">Esteban</label>
-                        <label for="cognome">Ocon</label>
-                        
-                    </td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 3 -->
-            <h1>SCUDERIA </h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 4 -->
-            <h1>Tabella 4</h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 5 -->
-            <h1>Tabella 5</h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 6 -->
-            <h1>Tabella 6</h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 7 -->
-            <h1>Tabella 7</h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 8 -->
-            <h1>Tabella 8</h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 9 -->
-            <h1>Tabella 9</h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
-        
-            <!-- Tabella 10 -->
-            <h1>Tabella 10</h1>
-            <table>
-                <tr>
-                    <td>Colonna 1</td>
-                    <td>Colonna 2</td>
-                </tr>
-            </table>
+            <div id="main_container"></div>
         </main>
-        
 
         <footer>
         <div class="footer-container">

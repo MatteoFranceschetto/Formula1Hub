@@ -13,7 +13,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="../css/base_style.css">
+
         <script src="../scripts/base_script.js"></script>
+        <script src="../scripts/squadraS.js"></script>
 
     </head>
 
@@ -89,48 +91,9 @@
 
         <main>
 
-            <div>
-                <h1>Evoluzione delle auto</h1>
-                <p>Scopri come si sono evolute le macchine dei team di Formula 1 negli anni</p>
-            </div>
+            <input type="hidden" id="hiddenField" value="<?php echo $_POST["nome"] ?>">
             
-            <div>
-                <div class="scuderia">
-                    <img src="..img/loghi/ferrari.png" alt="ferrari logo"><!-- logo della squadra -->
-                </div>
-                
-                <table>
-                    <tr>
-                        <td>
-                            <!--2022 -->
-                            <label for="nome">nome scuderia</label>  
-                            <br>  
-                            <label for="nome">sede</label>
-                            <br>       
-                            <label for="cognome">power unit</label>    
-                            <br>
-                            <label for="nome">direttore sportivo</label> 
-                            <br>      
-                            <label for="cognome">direttore tecnico</label>    
-                        </td>
-                        <td>
-                            <!--2023 -->
-                            <img src="../img/piloti/leclerc.png" alt="leclerc">  <!--immagine pilota1-->
-                            <img src="../img/piloti/sainz.png" alt="sainz">  <!--immagine pilota2-->
-                            <br>
-                            <label for="nomepilota">pilota1</label>
-                            <label for="nomepilota">pilota2</label>
-                                   
-                        </td>
-                       
-                    </tr>
-                </table>
-            </div>
-
-            <div>
-                <h1>DESCRIZIONE</h1>
-                <p>JEDBFJESAFDJHBSHFBSDHFBSHBFBFBFBFBFBFBFBFBFBFBFHDSBFHSDBFHSBFHSBHFBSHFBSHDBFSHBFHSBFHDSBFHSDBFH </p>
-            </div>
+            <div id="container_scuderia"></div>
             
         </main>
 
