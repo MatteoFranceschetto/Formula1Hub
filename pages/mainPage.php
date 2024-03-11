@@ -185,7 +185,7 @@
                     <h3>Ultime Notizie</h3>
                     <ul>
                         <li><a onclick="redirectToPage('calendario.php')" style="cursor: pointer;">Gare e Risultati</a></li>
-                        <li><a onclick="redirectToPage('scuderie.php')" style="cursor: pointer;">Team e Piloti</a></li>
+                        <li><a onclick="redirectToPage('generic_squadre.php')" style="cursor: pointer;">Team e Piloti</a></li>
                         <li><a onclick="redirectToPage('classifiche.php')" style="cursor: pointer;">Classifiche</a></li>
                     </ul>
                 </div>

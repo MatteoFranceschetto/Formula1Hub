@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="../css/newsG.css">
     
         <script src="../scripts/base_script.js"></script>
-        <script src="../scripts/newsPage.js"></script>
+        <script src="../scripts/newsG.js"></script>
 
     </head>
 
@@ -98,7 +98,7 @@
 
             <div class="container">
                 <h1>Notizie F1</h1>
-                <form action="#" method="GET" class="search-form">
+                <div class="search-form">
                     
                     <input type="search" id="search" name="search" placeholder="Cerca notizie...">
                     <select name="tiponews" id="tiponews">
@@ -107,25 +107,12 @@
                         <option value="p">Piloti</option>
                         <option value="g">Gare</option>
                     </select>
-                    <button onclick="loadNumNews()">Cerca</button>
-                </form>
+                    <button onclick="loadNewsContent()">Cerca</button>
+                </div>
             </div>
 
             <div id="container_news">
-                <div>
-                    <h3>How drivers stay healthy during the season</h3>
-                    <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
-                </div>
-
-                <div>
-                    <h3>How drivers stay healthy during the season</h3>
-                    <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
-                </div>
-
-                <div>
-                    <h3>How drivers stay healthy during the season</h3>
-                    <p>At the 2023 Abu Dhabi Grand Prix, after claiming his second top-three finish of the season, <br> George Russell, looking visibly weary, walked onto the podium above....</p>
-                </div>
+               
             </div>
             
             <div id="nav-container"></div>
@@ -139,7 +126,7 @@
                     <h3>Ultime Notizie</h3>
                     <ul>
                         <li><a onclick="redirectToPage('calendario.php')" style="cursor: pointer;">Gare e Risultati</a></li>
-                        <li><a onclick="redirectToPage('scuderie.php')" style="cursor: pointer;">Team e Piloti</a></li>
+                        <li><a onclick="redirectToPage('generic_squadre.php')" style="cursor: pointer;">Team e Piloti</a></li>
                         <li><a onclick="redirectToPage('classifiche.php')" style="cursor: pointer;">Classifiche</a></li>
                     </ul>
                 </div>

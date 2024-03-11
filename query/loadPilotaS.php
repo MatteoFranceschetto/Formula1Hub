@@ -23,7 +23,7 @@ function test_input($data) {
 // Recupera i dati relativi alla news ricercata (assicurandosi di evitare SQL injection)
 $Nome = test_input($_POST["pilota"]);
 
-$query = "SELECT * FROM piloti WHERE Nome = ?";
+$query = "SELECT * FROM piloti WHERE CodiceP = ?";
 
 // Query SQL per ottenere le news
 $stmt = conn->prepare($query);
