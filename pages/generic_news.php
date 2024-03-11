@@ -46,13 +46,17 @@
        
         <div id="mySidenav" class="sidenav">        <!-- Side Menu -->
             <a class="closebtn" onclick="closeSidebar()">&times;</a>
-            <a href="#">About</a>
+            <a onclick="redirectToPage('mainPage.php')" style="cursor: pointer;">HOME</a>
             <hr>
-            <a href="#">Services</a>
+            <a onclick="redirectToPage('storiamacchine.php')" style="cursor: pointer;">Macchine</a>
             <hr>
-            <a href="#">Clients</a>
+            <a onclick="redirectToPage('generic_squadre.php')" style="cursor: pointer;">Squadre</a>
             <hr>
-            <a href="#">Contact</a>
+            <a onclick="redirectToPage('piloti_gen.php')" style="cursor: pointer;">Piloti</a>
+            <hr>
+            <a onclick="redirectToPage('calendario.php')" style="cursor: pointer;">Calendario</a>
+            <hr>
+            <a onclick="redirectToPage('generic_news.php')" style="cursor: pointer;">News</a>
         </div>
 
         <div id="overlay"></div>                    <!-- Display di Login e Register -->
@@ -130,39 +134,37 @@
         </main>
 
         <footer>
-        <div class="footer-container">
-        <div class="footer-section">
-            <h3>Ultime Notizie</h3>
-            <ul>
-                <li><a href="#">Campionato Attuale</a></li>
-                <li><a href="#">Gare e Risultati</a></li>
-                <li><a href="#">Team e Piloti</a></li>
-                <li><a href="#">Classifiche</a></li>
-            </ul>
-        </div>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Ultime Notizie</h3>
+                    <ul>
+                        <li><a onclick="redirectToPage('calendario.php')" style="cursor: pointer;">Gare e Risultati</a></li>
+                        <li><a onclick="redirectToPage('scuderie.php')" style="cursor: pointer;">Team e Piloti</a></li>
+                        <li><a onclick="redirectToPage('classifiche.php')" style="cursor: pointer;">Classifiche</a></li>
+                    </ul>
+                </div>
 
-        <div class="footer-section">
-            <h3>Contatti</h3>
-            <p>Formula 1 News</p>
-            <p>Indirizzo: Via del Circuito, 123</p>
-            <p>Email: info@formula1news.com</p>
-        </div>
+                <div class="footer-section">
+                    <h3>Contatti</h3>
+                    <p>Formula 1 News</p>
+                    <p>Indirizzo: Via del Circuito, 123</p>
+                    <p>Email: info@formula1news.com</p>
+                </div>
 
-        <div class="footer-section">
-            <h3>Seguici</h3>
-            <ul class="social-icons">
-                <li><a href="#" target="_blank"><img src="../img/facebook.png" alt="Facebook"></a></li>
-                <li><a href="#" target="_blank"><img src="../img/x.png" alt="X"></a></li>
-                <li><a href="#" target="_blank"><img src="../img/Instagram.png" alt="Instagram"></a></li>
-            </ul>
-        </div>
-    </div>
+                <div class="footer-section">
+                    <h3>Seguici</h3>
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/Formula1" target="_blank" style="cursor: pointer;"><img src="../img/facebook.png" alt="Facebook"></a></li>
+                        <li><a href="https://twitter.com/F1" target="_blank" style="cursor: pointer;"><img src="../img/x.png" alt="X"></a></li>
+                        <li><a href="https://www.instagram.com/f1/" target="_blank" style="cursor: pointer;"><img src="../img/Instagram.png" alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
 
-    <div class="copyright">
-        <p>&copy; 2024 Formula 1 News. Tutti i diritti riservati.</p>
-    </div>
+            <div class="copyright">
+                <p>&copy; 2024 Formula 1 News. Tutti i diritti riservati.</p>
+            </div>
         </footer>
-
     </body>
 
 </html>

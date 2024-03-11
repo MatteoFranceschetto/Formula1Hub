@@ -47,15 +47,15 @@
             <a class="closebtn" onclick="closeSidebar()">&times;</a>
             <a>HOME</a>
             <hr>
-            <a onclick="redirectToPage('storiamacchine.php')">Macchine</a>
+            <a onclick="redirectToPage('storiamacchine.php')" style="cursor: pointer;">Macchine</a>
             <hr>
-            <a onclick="redirectToPage('generic_squadre.php')">Squadre</a>
+            <a onclick="redirectToPage('generic_squadre.php')" style="cursor: pointer;">Squadre</a>
             <hr>
-            <a onclick="redirectToPage('piloti_gen.php')">Piloti</a>
+            <a onclick="redirectToPage('piloti_gen.php')" style="cursor: pointer;">Piloti</a>
             <hr>
-            <a onclick="redirectToPage('calendario.php')">Calendario</a>
+            <a onclick="redirectToPage('calendario.php')" style="cursor: pointer;">Calendario</a>
             <hr>
-            <a onclick="redirectToPage('generic_news.php')">News</a>
+            <a onclick="redirectToPage('generic_news.php')" style="cursor: pointer;">News</a>
         </div>
 
         <div id="overlay"></div>                    <!-- Display di Login e Register -->
@@ -108,15 +108,15 @@
 
                         <!-- Full-width images with number and caption text -->
                         <div class="mySlides fade">
-                            <img class="immagine_slide" src="../img/slide_1.jpg" style="width:100%">
+                            <img class="immagine_slide" src="../img/slide_1.png" style="width:100%">
                         </div>
 
                         <div class="mySlides fade">
-                            <img class="immagine_slide" src="../img/slide_2.jpg" style="width:100%">
+                            <img class="immagine_slide" src="../img/slide_2.png" style="width:100%">
                         </div>
 
                         <div class="mySlides fade">
-                            <img class="immagine_slide" src="../img/slide_3.jpg" style="width:100%">
+                            <img class="immagine_slide" src="../img/slide_3.png" style="width:100%">
                         </div>
 
                         <!-- The dots/circles -->
@@ -184,9 +184,9 @@
                 <div class="footer-section">
                     <h3>Ultime Notizie</h3>
                     <ul>
-                        <li><a onclick="redirectToPage('calendario.php')">Gare e Risultati</a></li>
-                        <li><a onclick="redirectToPage('scuderie.php')">Team e Piloti</a></li>
-                        <li><a onclick="redirectToPage('classifiche.php')">Classifiche</a></li>
+                        <li><a onclick="redirectToPage('calendario.php')" style="cursor: pointer;">Gare e Risultati</a></li>
+                        <li><a onclick="redirectToPage('scuderie.php')" style="cursor: pointer;">Team e Piloti</a></li>
+                        <li><a onclick="redirectToPage('classifiche.php')" style="cursor: pointer;">Classifiche</a></li>
                     </ul>
                 </div>
 
@@ -200,9 +200,9 @@
                 <div class="footer-section">
                     <h3>Seguici</h3>
                     <ul class="social-icons">
-                        <li><a href="#" target="_blank"><img src="../img/facebook.png" alt="Facebook"></a></li>
-                        <li><a href="#" target="_blank"><img src="../img/x.png" alt="X"></a></li>
-                        <li><a href="#" target="_blank"><img src="../img/Instagram.png" alt="Instagram"></a></li>
+                        <li><a href="https://www.facebook.com/Formula1" target="_blank" style="cursor: pointer;"><img src="../img/facebook.png" alt="Facebook"></a></li>
+                        <li><a href="https://twitter.com/F1" target="_blank" style="cursor: pointer;"><img src="../img/x.png" alt="X"></a></li>
+                        <li><a href="https://www.instagram.com/f1/" target="_blank" style="cursor: pointer;"><img src="../img/Instagram.png" alt="Instagram"></a></li>
                     </ul>
                 </div>
             </div>

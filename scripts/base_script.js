@@ -179,6 +179,10 @@ function closeRegister() {
 //----------------- Chiamata Funzione di LogOut ---------------------------
 
 function logOut() {
+    // Rimuovi i cookie
+    eliminaCookie("nome");
+    eliminaCookie("cognome");
+
     // Chiudi la sessione
     chiudiSessione();
 
@@ -186,6 +190,24 @@ function logOut() {
     ripristinaAvatarDefault();
     ripristinaDropdown();
     ripristinaSideNav();
+
+        
+    var currentPage = getFileName();
+    if (currentPage === 'preferiti.php' || currentPage === 'confronto.php') {
+        // Reindirizzamento alla mainPage.php
+        window.location.href = 'mainPage.php';
+    }
+
+}  
+
+function eliminaCookie(nome) {
+    document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+function getFileName() {
+    var url = window.location.pathname;
+    var filename = url.substring(url.lastIndexOf('/') + 1);
+    return filename;
 }
 
 function chiudiSessione() {
