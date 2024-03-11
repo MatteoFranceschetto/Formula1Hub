@@ -13,29 +13,15 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <link rel="stylesheet" href="../css/base_style.css">
+        <link rel="stylesheet" href="../css/mainPage-SlideShow.css">
+
         <script src="../scripts/base_script.js"></script>
-
-
-        <style>
-            
-            .slideshow-container , .img{
-                max-width: 1000px;
-                max-height: 500px;
-                min-width: 500px;
-                min-height: 250px;
-                position: relative;
-                margin: auto;
-            }
-
-
-        </style>
-
         
     </head>
 
     <body>
     
-    <header id="myHeader">
+        <header id="myHeader">
             <div class="menu-icon" onclick="toggleSidebar()">
                 <div class="menu-lines"></div>
                 <div class="menu-lines"></div>
@@ -59,13 +45,17 @@
        
         <div id="mySidenav" class="sidenav">        <!-- Side Menu -->
             <a class="closebtn" onclick="closeSidebar()">&times;</a>
-            <a href="#">About</a>
+            <a>HOME</a>
             <hr>
-            <a href="#">Services</a>
+            <a onclick="redirectToPage('storiamacchine.php')">Macchine</a>
             <hr>
-            <a href="#">Clients</a>
+            <a onclick="redirectToPage('generic_squadre.php')">Squadre</a>
             <hr>
-            <a href="#">Contact</a>
+            <a onclick="redirectToPage('piloti_gen.php')">Piloti</a>
+            <hr>
+            <a onclick="redirectToPage('calendario.php')">Calendario</a>
+            <hr>
+            <a onclick="redirectToPage('generic_news.php')">News</a>
         </div>
 
         <div id="overlay"></div>                    <!-- Display di Login e Register -->
@@ -105,65 +95,54 @@
         </div>
 
 
-        <main>
+        <main id="main_mainPage">
             <section class="hero-section">
                 <div class="hero-content">
-                    <h1>Benvenuto su Formula1Hub!</h1>
-                    <p>Il centro nervoso dell'adrenalina automobilistica.</p>
+                    <div class="main_title">
+                        <h1>Benvenuto su Formula1Hub!</h1>
+                        <h3>LEGGERO COME IL CARBONIO, VELOCE COME UNA POLE POSITION.</h3>
+                    </div>
 
 
-                    <div class="slideshow-container" style="margin-top: 6.5%;">
-                    <div class="mySlides fade">
+                    <div class="slideshow-container">
+
+                        <!-- Full-width images with number and caption text -->
+                        <div class="mySlides fade">
+                            <img class="immagine_slide" src="../img/slide_1.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img class="immagine_slide" src="../img/slide_2.jpg" style="width:100%">
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img class="immagine_slide" src="../img/slide_3.jpg" style="width:100%">
+                        </div>
+
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
                     
-                    <img src="../img/macchine/ferrari.png" style="width:100%" class="img">
-
-                    </div>
-
-                    <div class="mySlides fade">
-                    
-                    <img src="../img/piloti/hamilton.png" style="width:100%" class="img">
-
-                    </div>
-
-                    <div class="mySlides fade">
-                    
-                    <img src="../img/piloti/leclerc.png" style="width:100%" class="img">
-
-                    </div>
-
-                    </div>
-                    <br>
-
-                    <div style="text-align:center">
-                    <span class="dot"></span> 
-                    <span class="dot"></span> 
-                    <span class="dot"></span> 
-                    </div>
-
-                    <script>
-                        var slideIndex = 0;
+                    <script>            // portandolo fuori crea errori
+                        let slideIndex = 0;
                         showSlides();
-                        
+
                         function showSlides() {
-                        var i;
-                        var slides = document.getElementsByClassName("mySlides");
-                        var dots = document.getElementsByClassName("dot");
+                        let i;
+                        let slides = document.getElementsByClassName("mySlides");
                         for (i = 0; i < slides.length; i++) {
-                            slides[i].style.display = "none";  
+                            slides[i].style.display = "none";
                         }
                         slideIndex++;
-                        if (slideIndex > slides.length) {slideIndex = 1}    
-                        for (i = 0; i < dots.length; i++) {
-                            dots[i].className = dots[i].className.replace(" active", "");
-                        }
-                        slides[slideIndex-1].style.display = "block";  
-                        dots[slideIndex-1].className += " active";
-                        setTimeout(showSlides, 5000); // Change image every 2 seconds
+                        if (slideIndex > slides.length) {slideIndex = 1}
+                        slides[slideIndex-1].style.display = "block";
+                        setTimeout(showSlides, 10000); // Change image every 10 seconds
                         }
                     </script>
 
-
-                    
                 </div>
             </section>
 
@@ -205,10 +184,9 @@
                 <div class="footer-section">
                     <h3>Ultime Notizie</h3>
                     <ul>
-                        <li><a href="#">Campionato Attuale</a></li>
-                        <li><a href="#">Gare e Risultati</a></li>
-                        <li><a href="#">Team e Piloti</a></li>
-                        <li><a href="#">Classifiche</a></li>
+                        <li><a onclick="redirectToPage('calendario.php')">Gare e Risultati</a></li>
+                        <li><a onclick="redirectToPage('scuderie.php')">Team e Piloti</a></li>
+                        <li><a onclick="redirectToPage('classifiche.php')">Classifiche</a></li>
                     </ul>
                 </div>
 

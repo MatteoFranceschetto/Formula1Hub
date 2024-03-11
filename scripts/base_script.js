@@ -175,18 +175,6 @@ function closeRegister() {
 }
 //#endregion
 
-function showErrorMessage(message) {
-    var errorMessageElement = document.getElementById("errorMessage");
-    errorMessageElement.textContent = message;
-    errorMessageElement.style.display = "block";
-    setTimeout(closeErrorMessage(), 6000);
-}
-
-function closeErrorMessage() {
-    var errorMessageElement = document.getElementById("errorMessage");
-    errorMessageElement.style.display = "none";
-}
-
 //#region Chiamata LogOut
 //----------------- Chiamata Funzione di LogOut ---------------------------
 
@@ -246,6 +234,32 @@ function ripristinaSideNav() {
 
 // ---------------- Funzioni Comuni ---------------------------------------
 
+function showErrorMessage(message) {
+    var errorMessageElement = document.getElementById("errorMessage");
+    errorMessageElement.textContent = message;
+    errorMessageElement.style.display = "block";
+    setTimeout(closeErrorMessage(), 6000);
+}
+
+function closeErrorMessage() {
+    var errorMessageElement = document.getElementById("errorMessage");
+    errorMessageElement.style.display = "none";
+}
+
+function redirectToPage(url) {
+
+    // Crea un elemento di modulo dinamico
+    var form = document.createElement('form');
+    form.method = 'post';
+    form.action =  url;
+
+    // Aggiungi il modulo alla pagina
+    document.body.appendChild(form);
+
+    // Invia automaticamente il modulo
+    form.submit();
+}
+
 //#region updates
 function updateAvatar(nome, cognome) {
     // Seleziona l'elemento avatar esistente
@@ -302,9 +316,12 @@ function updateDropdown(){
     dropdown.innerHTML="";
 
     favorite = document.createElement("a");
-    favorite.setAttribute("href", "#");
     favorite.textContent = "Preferiti";
     favorite.id = "menu_favorite";
+    favorite.addEventListener("click", function (event) {
+        event.preventDefault();
+        redirectToPage('preferiti.php');
+    });
     dropdown.appendChild(favorite);
 
     logout = document.createElement("a");
@@ -324,20 +341,26 @@ function updateSidenav(){
     sidenav.appendChild(line);
 
     favorite = document.createElement("a");
-    favorite.setAttribute("href", "#");
     favorite.textContent = "Preferiti";
     favorite.id = "side_favorite";
+    favorite.addEventListener("click", function (event) {
+        event.preventDefault();
+        redirectToPage('preferiti.php');
+    });
     sidenav.appendChild(favorite);
 
     line2 = document.createElement("hr");
     line2.id="Confronto_line";
     sidenav.appendChild(line2);
 
-    contronto = document.createElement("a");
-    contronto.setAttribute("href", "#");
-    contronto.textContent = "Confronto Piloti";
-    contronto.id = "Confronto";
-    sidenav.appendChild(contronto);
+    var confronto = document.createElement("a");
+    confronto.textContent = "Confronto Piloti";
+    confronto.id = "Confronto";
+    confronto.addEventListener("click", function (event) {
+        event.preventDefault();
+        redirectToPage('confronto.php');
+    });
+    sidenav.appendChild(confronto);
 }
 //#endregion
 
