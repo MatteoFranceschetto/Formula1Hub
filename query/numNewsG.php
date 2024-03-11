@@ -21,8 +21,10 @@ function test_input($data) {
 }
 
 // Recupera i dati relativi alla news ricercata (assicurandosi di evitare SQL injection)
-$tipologia = test_input($_POST["tipologia"]);
-$testo = test_input($_POST["testo"]);
+if(isset($_POST["tipologia"]))
+    $tipologia = test_input($_POST["tipologia"]);
+if(isset($_POST["testo"]))
+    $testo = test_input($_POST["testo"]);
 
 if(isset($tipologia)){
     if(isset($testo)){
@@ -49,14 +51,14 @@ else{
 }
 
 // Query SQL per ottenere le news
-$stmt = conn->prepare($query);
+$stmt = $conn->prepare($query);
 if(isset($testo))
     $stmt->bind_param("ss", $testo, $testo);
 $stmt->execute();
 $result = $stmt->get_result();
 
 // Interazione sui risultati
-$row = $result->fetch_assoc()
+$row = $result->fetch_assoc();
 if($row['NUM_NEWS'] > 0)
     echo $row['NUM_NEWS'];
 else

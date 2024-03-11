@@ -1,5 +1,4 @@
-function loadNewsContent() {
-    var currentIndex = parseInt(document.getElementById('hiddenField').value);
+function loadPilotiContent() {
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -11,8 +10,8 @@ function loadNewsContent() {
         }
     };
 
-    xhr.open('POST', '../query/loadPilotiG', true);
+    xhr.open('POST', '../query/loadPilotiG.php', true);
     xhr.send();
 }
 
-document.addEventListener("DOMContentLoaded", loadNewsContent());
+document.addEventListener("DOMContentLoaded", loadPilotiContent);

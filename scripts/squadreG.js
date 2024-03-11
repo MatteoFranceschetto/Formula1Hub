@@ -1,18 +1,20 @@
-document.addEventListener("load", caricaDatiPiloti());
+document.addEventListener("DOMContentLoaded", caricaDatiPiloti);
 
-// Funzione per ottenere e visualizzare i dati dei piloti con Ajax
 function caricaDatiPiloti() {
-    $.ajax({
-        url: '../query/loadSquadre.php', // Sostituisci con il percorso del file PHP che esegue la query del database
-        type: 'GET',
-        dataType: 'html',
-        success: function(data) {
-            console.log('Dati ricevuti:', data);
-            $('#piloti-tabella').html(data);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log('Errore Ajax: ' + textStatus + ' ' + errorThrown);
-            $('#piloti-tabella').html("Errore caricamento pagina");
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../query/loadSquadreG.php', true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Accept", "text/html");  // Imposta l'intestazione Accept su "text/html"
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                document.getElementById('piloti-tabella').innerHTML = xhr.responseText;
+            } else {
+                alert("Qualcosa è andato storto");
+            }
         }
-    });
+    };
+
+    xhr.send();
 }

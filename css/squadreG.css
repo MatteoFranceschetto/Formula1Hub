@@ -1,40 +1,97 @@
+/* Stile per la tabella e i contenitori principali */
 table {
-    width: 50%;
-    border-collapse: separate; /* Usiamo border-collapse: separate per separare le celle */
-    border-spacing: 10px; /* Aggiungiamo spazio tra le celle */
-    margin: 20px auto;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border:0;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
-th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
+
+#outer_table td {
+    border: 1px solid darkred;
 }
-table tr td {
-    text-align: center; /* Aggiunto per centrare il contenuto */
+
+#internal_table td{
+    border: 0;
 }
-.pilota1 {
-    float: left; /* Allinea a sinistra */
-    margin-right: 10px; /* Aggiunge spazio tra i piloti */
+
+td{
+    padding: 20px;
+    text-align: center;
 }
-.pilota2 {
-    float: right; /* Allinea a destra */
-    margin-left: 10px; /* Aggiunge spazio tra i piloti */
+
+#outer_table tr{
+    border-bottom: 1px solid darkred;
 }
+
+#internal_table tr{
+    border: 0;
+}
+
+/* Stile per le squadre */
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #d9534f; /* Rosso - Cambialo con il colore desiderato */
+}
+
+/* Stile per i piloti e le immagini */
+.pilota1,
+.pilota2,
+.logosquadra,
+.macchinaimg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#internal_table{
+    border: 0;
+}
+
+#outer_table{
+    border: 4px darkred solid;
+}
+
+/* Stile per le immagini dei piloti, il logo della squadra e l'immagine della macchina */
+.pilotaimg,
+.logosquadra img {
+    max-width: 120px; /* Larghezza massima delle immagini */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+/* Effetto di transizione su hover */
+.pilotaimg:hover,
+.logosquadra img:hover,
+.macchinaimg img:hover {
+    transform: scale(1.1);
+}
+
+.logo {
+    max-width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Stile per centrare la macchina orizzontalmente */
+.macchinaimg {
+    width: 70%; /* Larghezza aumentata */
+    margin: 0 auto; /* Centra il contenitore orizzontalmente */
+}
+
 .macchinaimg{
-    width: 30em;
+    max-width: 600px;
     height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
 }
-.pilotaimg{
-    width: 5em;
-    height: auto;
-    
-    border: 2px solid;
-}
-.logosquadra{
-    width: 7em;
-    height: auto;
+
+
+/* Nuova riga per l'immagine della macchina */
+.macchina-row {
+    display: flex;
+    justify-content: center;
 }

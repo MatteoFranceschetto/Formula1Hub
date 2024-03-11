@@ -18,54 +18,43 @@ $resultSquadre = $conn->query($sqlSquadre);
 
 $altern = true;
 
-echo '<table>';
-
 // Iterazione sui risultati delle squadre
 while ($rowSquadra = $resultSquadre->fetch_assoc()) {
+    echo '<div class="team-container">';
     echo '<div>';
+    echo '<img class="team-logo" src="data:image/jpeg;base64,' . base64_encode($rowSquadra['Logo']) . '" alt="' . $rowSquadra['Nome'] . '">';
     echo '<h3>' . $rowSquadra['Nome'] . '</h3>';
-    echo '<img class=\'logosquadra\' src="data:image/jpeg;base64,' . base64_encode($rowSquadra['Logo']) . '" alt="' . $rowSquadra['Nome'] . '">';
     echo '</div>';
-    
-    echo '<table>';
-    echo '<tr>';
 
+    echo '<div class="pilot-container">';
+    
     // Ottieni i primi due piloti per la squadra corrente
     $sqlPiloti = "SELECT piloti.Nome, piloti.Cognome, piloti.Numero, piloti.Foto
                     FROM piloti
                     INNER JOIN contratto ON piloti.CodiceP = contratto.CodiceP
-                    WHERE contratto.CodiceSquadra = " . $rowSquadra['CodiceS'] . "
+                    WHERE contratto.CodiceS = " . $rowSquadra['CodiceS'] . "
                     ORDER BY contratto.DataContratto
                     LIMIT 2;";
 
     $resultPiloti = $conn->query($sqlPiloti);
-
-    $resultMacchina = conn->query($sqlMacchina)->fetch_assoc();
-
+    
+    echo '<table><tr>';
     // Iterazione sui risultati dei piloti
-    $rowPilota1 = $resultPiloti->fetch_assoc();
-    $rowPilota2 = $resultPiloti->fetch_assoc();
+    while ($rowPilota = $resultPiloti->fetch_assoc()) {
+        echo '<td>';
+        echo '<div class="pilot">';
+        echo '<img src="data:image/jpeg;base64,' . base64_encode($rowPilota['Foto']) . '" alt="' . $rowPilota['Nome'] . '">';
+        echo '<label for="nome">' . $rowPilota['Nome'] . ' ' . $rowPilota['Cognome'] . '</label>';
+        echo '<label for="numero">Numero: ' . $rowPilota['Numero'] . '</label>';
+        echo '</div>';
+        echo '</td>';
+    }
+    echo '</tr></table>';
 
-    // Stampa una riga della tabella con i dati dei piloti e la macchina
-    echo '<td>';
-    echo '<img class=\'pilotaimg\' src="data:image/jpeg;base64,' . base64_encode($rowPilota1['Foto']) . '" alt="' . $rowPilota1['Nome'] . '">';
-    echo '<label for="nome">' . $rowPilota1['Nome'] . '</label>';
-    echo '<label for="cognome">' . $rowPilota1['Cognome'] . '</label>';
-    echo '<label for="numero pilota">'. $rowPilota1['Numero'] . '</label>';
-    echo '</td>';
-    echo '<td>';
-    echo '<img class=\'pilotaimg\' src="data:image/jpeg;base64,' . base64_encode($rowPilota2['Foto']) . '" alt="' . $rowPilota2['Nome'] . '">';
-    echo '<label for="nome">' . $rowPilota2['Nome'] . '</label>';
-    echo '<label for="cognome">' . $rowPilota2['Cognome'] . '</label>';
-    echo '<label for="numero pilota">'. $rowPilota2['Numero'] . '</label>';
-    echo '</td>';
+    echo '</div>'; // Chiude .pilot-container
 
-    echo '</tr>';
-    echo '</table>';
+    echo '</div>'; // Chiude .team-container
 }
-
-// Chiudi l'ultima tabella
-echo '</table>';
 
 // Chiudi la connessione al database
 $conn->close();

@@ -29,10 +29,15 @@ while ($rowSquadra = $resultSquadre->fetch_assoc()) {
 
     // Verifica se ci sono macchine disponibili
     if ($resultMacchine->num_rows > 0) {
-        echo '<div class="scuderia">'
-        echo '<img src="data:image/jpeg;base64,' . base64_encode($rowSquadra['Foto']) . '" alt="' . $rowSquadra['Nome'] . '">';
+        echo "<table>";
+        echo "<tr>";
+        echo "<td style='width : 300px'>";
+        echo '<div class="scuderia">';
+        echo '<img src="data:image/jpeg;base64,' . base64_encode($rowSquadra['Logo']) . '" alt="' . $rowSquadra['Nome'] . '">';
         echo '<h3>' . $rowSquadra['Nome'] . '</h3>';
         echo '</div>';
+        echo "</td>";
+        echo "<td>";
         
         // Inizio della tabella
         echo '<table>';
@@ -63,6 +68,9 @@ while ($rowSquadra = $resultSquadre->fetch_assoc()) {
 
         // Fine della tabella
         echo '</table>';
+        echo "</td>";
+        echo "</tr>";
+        echo "</table>";
     }
 }
 
